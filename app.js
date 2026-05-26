@@ -221,8 +221,6 @@ const elements = {
   parentPickMeta: document.querySelector("#parentPickMeta"),
   scoreStrip: document.querySelector("#scoreStrip"),
   template: document.querySelector("#mealCardTemplate"),
-  childOneName: document.querySelector("#childOneName"),
-  childTwoName: document.querySelector("#childTwoName"),
   copySummary: document.querySelector("#copySummary"),
   printPage: document.querySelector("#printPage"),
   resetWeek: document.querySelector("#resetWeek")
@@ -434,7 +432,6 @@ function setParentPick(matchKey) {
 }
 
 function render() {
-  syncInputs();
   renderTabs();
   renderScores();
 
@@ -452,15 +449,6 @@ function render() {
     elements.modeLabel.textContent = `${state.names[kid]} choices`;
     elements.modeTitle.textContent = `Select every lunch ${state.names[kid]} would enjoy.`;
     renderMenu();
-  }
-}
-
-function syncInputs() {
-  if (document.activeElement !== elements.childOneName) {
-    elements.childOneName.value = state.names.kid1;
-  }
-  if (document.activeElement !== elements.childTwoName) {
-    elements.childTwoName.value = state.names.kid2;
   }
 }
 
@@ -795,28 +783,6 @@ async function copySummary() {
 
 document.querySelectorAll(".segment").forEach((button) => {
   button.addEventListener("click", () => setView(button.dataset.view));
-});
-
-elements.childOneName.addEventListener("input", (event) => {
-  state.names.kid1 = event.target.value.trim() || "Child 1";
-  saveState();
-  renderTabs();
-  renderScores();
-  if (state.view === "kid1") {
-    elements.modeLabel.textContent = `${state.names.kid1} choices`;
-    elements.modeTitle.textContent = `Select every lunch ${state.names.kid1} would enjoy.`;
-  }
-});
-
-elements.childTwoName.addEventListener("input", (event) => {
-  state.names.kid2 = event.target.value.trim() || "Child 2";
-  saveState();
-  renderTabs();
-  renderScores();
-  if (state.view === "kid2") {
-    elements.modeLabel.textContent = `${state.names.kid2} choices`;
-    elements.modeTitle.textContent = `Select every lunch ${state.names.kid2} would enjoy.`;
-  }
 });
 
 elements.copySummary.addEventListener("click", copySummary);

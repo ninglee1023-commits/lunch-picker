@@ -88,7 +88,6 @@ h3 {
 }
 
 .toolbar,
-.child-fields,
 .segmented,
 .score-strip,
 .meal-meta,
@@ -133,38 +132,10 @@ h3 {
 }
 
 .control-band {
-  display: grid;
-  grid-template-columns: minmax(280px, 1fr) auto;
-  gap: 18px;
-  align-items: end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   padding: 16px 0;
-}
-
-.child-fields {
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.child-fields label {
-  display: grid;
-  gap: 6px;
-  min-width: min(240px, 100%);
-}
-
-.child-fields span {
-  color: var(--muted);
-  font-size: 0.86rem;
-  font-weight: 700;
-}
-
-.child-fields input {
-  width: 100%;
-  min-height: 42px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
-  color: var(--ink);
-  padding: 9px 11px;
 }
 
 .segmented {
@@ -610,7 +581,7 @@ h3 {
   }
 
   .control-band {
-    grid-template-columns: 1fr;
+    justify-content: stretch;
   }
 
   .segmented {
