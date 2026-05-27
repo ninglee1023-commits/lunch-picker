@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AISG Lunch Picker</title>
-    <link rel="stylesheet" href="styles.css?v=fixed-kids-20260526">
+    <meta name="theme-color" content="#17464c">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="icons/icon-180.png">
+    <link rel="stylesheet" href="styles.css?v=pwa-20260527">
   </head>
   <body>
     <div class="app-shell">
@@ -91,6 +94,13 @@
       </article>
     </template>
 
-    <script src="app.js?v=fixed-kids-20260526"></script>
+    <script src="app.js?v=pwa-20260527"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js").catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>

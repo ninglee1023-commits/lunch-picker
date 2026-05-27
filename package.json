@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "check": "node --check app.js && node --check serve.mjs"
+    "check": "node --check app.js && node --check serve.mjs && node --check sw.js"
   },
   "devDependencies": {}
 }

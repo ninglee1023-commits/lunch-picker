@@ -31,6 +31,12 @@ Each lunch card has a speaker button. It uses the browser's built-in Web Speech 
 
 Speech quality depends on the device browser and installed voices. iPhone, iPad, Chrome, Edge, and Safari usually work after the first tap. For Chinese, the app asks for a `zh-CN` or Mandarin/Putonghua voice.
 
+## Add To Home Screen
+
+The site includes a web app manifest, app icons, and a service worker, so phones can install it as `Lunch Picker` instead of saving it as a plain browser bookmark. On iPhone or iPad, open the live GitHub Pages URL in Safari and choose Share -> Add to Home Screen.
+
+If the phone has an older shortcut from before the PWA files were added, delete that shortcut first and add it again from the standalone lunch-picker URL.
+
 ## Online Hosting
 
 This app is static, so it can be hosted on GitHub Pages, Netlify, Cloudflare Pages, Vercel, or any basic web host.
