@@ -538,7 +538,7 @@ function makeMealCard(item, mode) {
     "aria-label",
     isPicker ? `Toggle ${item.title}` : `Choose ${item.title} as final lunch`
   );
-  selectedMark.textContent = isPicker ? "Selected" : "Final pick";
+  selectedMark.textContent = isPicker ? "Picked" : "Final pick";
   dayPill.textContent = item.day;
   setPill.textContent = item.set;
   setPill.classList.add(item.set.toLowerCase());

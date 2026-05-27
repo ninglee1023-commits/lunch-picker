@@ -226,6 +226,7 @@ h3 {
 }
 
 .meal-card {
+  position: relative;
   display: grid;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -235,13 +236,21 @@ h3 {
 }
 
 .meal-card.is-selected {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow);
+  border-color: var(--accent-strong);
+  background: linear-gradient(180deg, #f2fbfb, #ffffff 46%);
+  box-shadow:
+    inset 0 0 0 4px var(--accent-strong),
+    0 0 0 4px rgba(40, 101, 109, 0.22),
+    var(--shadow);
 }
 
 .meal-card.is-parent-pick {
-  border-color: var(--yellow);
-  box-shadow: 0 0 0 3px rgba(241, 191, 69, 0.32), var(--shadow);
+  border-color: #9d7100;
+  background: linear-gradient(180deg, #fff8df, #ffffff 46%);
+  box-shadow:
+    inset 0 0 0 4px #9d7100,
+    0 0 0 4px rgba(241, 191, 69, 0.42),
+    var(--shadow);
 }
 
 .image-button {
@@ -262,17 +271,45 @@ h3 {
   object-fit: cover;
 }
 
+.image-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: none;
+  pointer-events: none;
+}
+
+.meal-card.is-selected .image-button::after {
+  display: block;
+  background: linear-gradient(180deg, rgba(23, 70, 76, 0.1), rgba(23, 70, 76, 0.22));
+  box-shadow: inset 0 0 0 5px var(--accent-strong);
+}
+
+.meal-card.is-parent-pick .image-button::after {
+  display: block;
+  background: linear-gradient(180deg, rgba(157, 113, 0, 0.1), rgba(157, 113, 0, 0.22));
+  box-shadow: inset 0 0 0 5px #9d7100;
+}
+
 .selected-mark {
   position: absolute;
-  top: 9px;
-  right: 9px;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
   display: none;
   border-radius: 999px;
   background: var(--accent-strong);
   color: #ffffff;
-  padding: 5px 8px;
-  font-size: 0.75rem;
-  font-weight: 800;
+  padding: 8px 11px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+  text-transform: uppercase;
+}
+
+.meal-card.is-parent-pick .selected-mark {
+  background: #8a6400;
 }
 
 .meal-card.is-selected .selected-mark,
@@ -439,6 +476,15 @@ h3 {
   color: inherit;
   padding: 0;
   text-align: left;
+}
+
+.same-day-match.is-parent-pick .match-pick-button {
+  background: #fff8df;
+  box-shadow: inset 0 0 0 5px #9d7100;
+}
+
+.same-day-match.is-parent-pick .match-choice img {
+  box-shadow: 0 0 0 4px #9d7100;
 }
 
 .match-summary {
