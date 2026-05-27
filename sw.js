@@ -1,9 +1,9 @@
-const CACHE_NAME = "aisg-lunch-picker-selected-20260527-v3";
+const CACHE_NAME = "aisg-lunch-picker-garden-top-20260527-v4";
 const APP_ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=selected-20260527",
-  "./app.js?v=selected-20260527",
+  "./styles.css?v=garden-top-20260527",
+  "./app.js?v=garden-top-20260527",
   "./manifest.webmanifest",
   "./icons/icon-180.png",
   "./icons/icon-192.png",

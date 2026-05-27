@@ -236,11 +236,11 @@ h3 {
 }
 
 .meal-card.is-selected {
-  border-color: var(--accent-strong);
-  background: linear-gradient(180deg, #f2fbfb, #ffffff 46%);
+  border-color: var(--green);
+  background: linear-gradient(180deg, #f5fbf1, #ffffff 48%);
   box-shadow:
-    inset 0 0 0 4px var(--accent-strong),
-    0 0 0 4px rgba(40, 101, 109, 0.22),
+    inset 0 0 0 3px rgba(78, 125, 67, 0.9),
+    0 0 0 4px rgba(78, 125, 67, 0.17),
     var(--shadow);
 }
 
@@ -281,8 +281,8 @@ h3 {
 
 .meal-card.is-selected .image-button::after {
   display: block;
-  background: linear-gradient(180deg, rgba(23, 70, 76, 0.1), rgba(23, 70, 76, 0.22));
-  box-shadow: inset 0 0 0 5px var(--accent-strong);
+  background: linear-gradient(180deg, rgba(78, 125, 67, 0.04), rgba(78, 125, 67, 0.1));
+  box-shadow: inset 0 0 0 4px rgba(78, 125, 67, 0.78);
 }
 
 .meal-card.is-parent-pick .image-button::after {
@@ -293,28 +293,61 @@ h3 {
 
 .selected-mark {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  left: 50%;
   z-index: 2;
   display: none;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
   border-radius: 999px;
-  background: var(--accent-strong);
+  background: rgba(54, 93, 47, 0.82);
   color: #ffffff;
-  padding: 8px 11px;
-  font-size: 0.82rem;
+  padding: 7px 13px;
+  font-size: 0.8rem;
   font-weight: 900;
   letter-spacing: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 8px 20px rgba(25, 52, 21, 0.22);
   text-transform: uppercase;
+  transform: translate(-50%, -18px);
+  opacity: 0;
+  backdrop-filter: blur(8px);
+}
+
+.selected-mark::before {
+  content: "✓";
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--green);
+  font-size: 0.95rem;
+  line-height: 1;
 }
 
 .meal-card.is-parent-pick .selected-mark {
-  background: #8a6400;
+  background: rgba(138, 100, 0, 0.86);
+  box-shadow: 0 8px 20px rgba(95, 69, 0, 0.24);
 }
 
 .meal-card.is-selected .selected-mark,
 .meal-card.is-parent-pick .selected-mark {
   display: inline-flex;
+  animation: selectedDrop 260ms ease-out forwards;
+}
+
+@keyframes selectedDrop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 .meal-body {
