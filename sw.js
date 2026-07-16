@@ -1,9 +1,9 @@
-const CACHE_NAME = "aisg-lunch-picker-garden-top-20260527-v4";
+const CACHE_NAME = "aisg-lunch-picker-cartoon-food-20260716-v1";
 const APP_ASSETS = [
   "./",
   "./index.html",
   "./styles.css?v=garden-top-20260527",
-  "./app.js?v=garden-top-20260527",
+  "./app.js?v=cartoon-food-20260716",
   "./manifest.webmanifest",
   "./icons/icon-180.png",
   "./icons/icon-192.png",
@@ -11,21 +11,20 @@ const APP_ASSETS = [
   "./icons/icon-maskable-512.png",
   "./assets/source/original-menu.jpg",
   "./assets/source/generated-meal-grid.png",
-  "./assets/food/asian-mon-pork-mince-egg.png",
-  "./assets/food/asian-tue-salty-chicken-egg-custard.png",
-  "./assets/food/asian-wed-pork-taro-soya.png",
-  "./assets/food/asian-thu-beef-brisket-curry.png",
-  "./assets/food/fri-mexican-food-festival.png",
-  "./assets/food/fri-mexican-food-festival-alt.png",
-  "./assets/food/veg-fri-quesadillas.png",
-  "./assets/food/veg-mon-udon-tofu.png",
-  "./assets/food/veg-thu-cheese-macaroni.png",
-  "./assets/food/veg-tue-frittata-cheese-toast.png",
-  "./assets/food/veg-wed-bean-curd-tempura.png",
-  "./assets/food/western-mon-bbq-chicken.png",
-  "./assets/food/western-thu-ham-cheese-sandwich.png",
-  "./assets/food/western-tue-beef-lasagna.png",
-  "./assets/food/western-wed-chicken-sausage-pasta.png"
+  "./assets/food/asian-mon-pork-mince-egg-cartoon.webp",
+  "./assets/food/asian-tue-salty-chicken-egg-custard-cartoon.webp",
+  "./assets/food/asian-wed-pork-taro-soya-cartoon.webp",
+  "./assets/food/asian-thu-beef-brisket-curry-cartoon.webp",
+  "./assets/food/fri-mexican-food-festival-cartoon.webp",
+  "./assets/food/veg-fri-quesadillas-cartoon.webp",
+  "./assets/food/veg-mon-udon-tofu-cartoon.webp",
+  "./assets/food/veg-thu-cheese-macaroni-cartoon.webp",
+  "./assets/food/veg-tue-frittata-cheese-toast-cartoon.webp",
+  "./assets/food/veg-wed-bean-curd-tempura-cartoon.webp",
+  "./assets/food/western-mon-bbq-chicken-cartoon.webp",
+  "./assets/food/western-thu-ham-cheese-sandwich-cartoon.webp",
+  "./assets/food/western-tue-beef-lasagna-cartoon.webp",
+  "./assets/food/western-wed-chicken-sausage-pasta-cartoon.webp"
 ];
 
 self.addEventListener("install", (event) => {
