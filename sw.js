@@ -1,30 +1,29 @@
-const CACHE_NAME = "aisg-lunch-picker-cartoon-food-20260716-v1";
+const CACHE_NAME = "aisg-lunch-picker-menu-20260824-v1";
 const APP_ASSETS = [
   "./",
   "./index.html",
   "./styles.css?v=garden-top-20260527",
-  "./app.js?v=cartoon-food-20260716",
+  "./app.js?v=menu-20260824",
   "./manifest.webmanifest",
   "./icons/icon-180.png",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/icon-maskable-512.png",
   "./assets/source/original-menu.jpg",
-  "./assets/source/generated-meal-grid.png",
-  "./assets/food/asian-mon-pork-mince-egg-cartoon.webp",
-  "./assets/food/asian-tue-salty-chicken-egg-custard-cartoon.webp",
-  "./assets/food/asian-wed-pork-taro-soya-cartoon.webp",
-  "./assets/food/asian-thu-beef-brisket-curry-cartoon.webp",
-  "./assets/food/fri-mexican-food-festival-cartoon.webp",
-  "./assets/food/veg-fri-quesadillas-cartoon.webp",
-  "./assets/food/veg-mon-udon-tofu-cartoon.webp",
-  "./assets/food/veg-thu-cheese-macaroni-cartoon.webp",
-  "./assets/food/veg-tue-frittata-cheese-toast-cartoon.webp",
-  "./assets/food/veg-wed-bean-curd-tempura-cartoon.webp",
-  "./assets/food/western-mon-bbq-chicken-cartoon.webp",
-  "./assets/food/western-thu-ham-cheese-sandwich-cartoon.webp",
-  "./assets/food/western-tue-beef-lasagna-cartoon.webp",
-  "./assets/food/western-wed-chicken-sausage-pasta-cartoon.webp"
+  "./assets/food/asian-mon-pork-mince-egg-20260824.webp",
+  "./assets/food/western-mon-roasted-chicken-orange-fennel-20260824.webp",
+  "./assets/food/veg-mon-curry-udon-tofu-20260824.webp",
+  "./assets/food/asian-tue-beef-pepper-lettuce-20260825.webp",
+  "./assets/food/western-tue-pulled-pork-sandwich-20260825.webp",
+  "./assets/food/veg-tue-sweet-sour-beancurd-20260825.webp",
+  "./assets/food/asian-wed-pork-taro-soya-20260826.webp",
+  "./assets/food/western-wed-beef-lasagna-20260826.webp",
+  "./assets/food/veg-wed-stewed-tofu-onigiri-20260826.webp",
+  "./assets/food/asian-thu-yangzhou-fried-rice-20260827.webp",
+  "./assets/food/western-thu-pork-chop-pesto-20260827.webp",
+  "./assets/food/veg-thu-tomato-noodles-tofu-20260827.webp",
+  "./assets/food/fri-southeast-asia-festival-20260828.webp",
+  "./assets/food/veg-fri-kwai-teow-green-curry-20260828.webp"
 ];
 
 self.addEventListener("install", (event) => {
