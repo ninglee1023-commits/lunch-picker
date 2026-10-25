@@ -257,7 +257,7 @@ h3 {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 1.12 / 1;
+  aspect-ratio: 3 / 2;
   border: 0;
   background: #eee7dc;
   padding: 0;
@@ -550,7 +550,7 @@ h3 {
 
 .match-choice img {
   width: 100%;
-  aspect-ratio: 1.12 / 1;
+  aspect-ratio: 3 / 2;
   border-radius: 7px;
   object-fit: cover;
 }
@@ -724,3 +724,7 @@ h3 {
 .source-link { font-size: .75rem; color: var(--accent-strong); display: inline-block; margin-top: 10px; }
 .item-list { line-height: 1.5; }
 @media(max-width: 600px) { .week-control, .week-control select { width: 100%; } .segmented { width: 100%; } .segment { min-width: 0; flex: 1; } }
+
+/* Photorealistic food artwork, November 2026 */
+.image-caption { margin: 12px 0 -8px; color: var(--muted); font-size: .75rem; }
+@media print { .image-caption { display: none; } }

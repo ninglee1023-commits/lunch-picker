@@ -154,7 +154,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Rice Noodles in Chicken Tomato Soup",
     "titleZh": "鸡丝番茄汤米线",
-    "image": "assets/food/asian-20261103.svg",
+    "image": "assets/food/asian-20261103-realistic-v2.webp",
     "items": [
       "Lettuce",
       "Vegetable & Pork Soup"
@@ -181,7 +181,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Baked Fish Fillet with Honey Mustard Cheese",
     "titleZh": "蜂蜜芥末芝士焗鱼柳",
-    "image": "assets/food/western-20261103.svg",
+    "image": "assets/food/western-20261103-realistic-v2.webp",
     "items": [
       "Stir-fried Carrot and Peas",
       "Mashed Potato",
@@ -213,7 +213,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Braised Mushroom Tofu, Roasted Eggplant, Egg Fried Rice",
     "titleZh": "金针菇烧日本豆腐，味噌烤茄子，杂菜蛋炒饭",
-    "image": "assets/food/vegetarian-20261103.svg",
+    "image": "assets/food/vegetarian-20261103-realistic-v2.webp",
     "items": [
       "Braised Mushroom Tofu",
       "Roasted Eggplant",
@@ -243,7 +243,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Stewed Beef with Radish",
     "titleZh": "柱候萝卜炆牛腩",
-    "image": "assets/food/asian-20261104.svg",
+    "image": "assets/food/asian-20261104-realistic-v2.webp",
     "items": [
       "Leaf Lettuce",
       "Steamed Rice",
@@ -272,7 +272,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Super Supreme Pizza",
     "titleZh": "超级至尊披萨",
-    "image": "assets/food/western-20261104.svg",
+    "image": "assets/food/western-20261104-realistic-v2.webp",
     "items": [
       "Sautéed Broccoli with Pepper",
       "Roasted Pumpkin",
@@ -304,7 +304,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Fried Rice Noodles, Curry Vegetables, Fried Egg with Corn",
     "titleZh": "素炒米粉，咖喱蔬菜，玉米炒蛋",
-    "image": "assets/food/vegetarian-20261104.svg",
+    "image": "assets/food/vegetarian-20261104-realistic-v2.webp",
     "items": [
       "Fried Rice Noodles",
       "Curry Vegetables",
@@ -334,7 +334,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Braised Chicken Drumstick with Potatoes",
     "titleZh": "土豆焖鸡腿",
-    "image": "assets/food/asian-20261105.svg",
+    "image": "assets/food/asian-20261105-realistic-v2.webp",
     "items": [
       "Choy Sum",
       "Steamed Rice",
@@ -363,7 +363,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Mexican BBQ Pork",
     "titleZh": "墨西哥风味烤肉",
-    "image": "assets/food/western-20261105.svg",
+    "image": "assets/food/western-20261105-realistic-v2.webp",
     "items": [
       "Mushroom Zucchini",
       "Potato Wedges",
@@ -394,7 +394,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Tomato Cheese Egg Panini, Hash Browns, Vegetables",
     "titleZh": "番茄芝士滑蛋帕尼尼，黄金薯饼，时蔬",
-    "image": "assets/food/vegetarian-20261105.svg",
+    "image": "assets/food/vegetarian-20261105-realistic-v2.webp",
     "items": [
       "Tomato Cheese Egg Panini",
       "Hash Browns",
@@ -425,7 +425,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Stir-fried Pork with Basil & Fried Eggs",
     "titleZh": "罗勒炒猪肉配煎鸡蛋",
-    "image": "assets/food/asian-20261106.svg",
+    "image": "assets/food/asian-20261106-realistic-v2.webp",
     "items": [
       "Green Pak Choi",
       "Steamed Rice",
@@ -456,7 +456,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Beef Sausage",
     "titleZh": "牛肉香肠",
-    "image": "assets/food/western-20261106.svg",
+    "image": "assets/food/western-20261106-realistic-v2.webp",
     "items": [
       "Baby Corn & Vegetables",
       "Garlic Pasta",
@@ -487,7 +487,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Braised Eggplant, Fungus and Bean Curd, Scallion Soba Noodles",
     "titleZh": "红烧茄子、木耳豆腐，葱油拌荞麦面",
-    "image": "assets/food/vegetarian-20261106.svg",
+    "image": "assets/food/vegetarian-20261106-realistic-v2.webp",
     "items": [
       "Braised Eggplant, Fungus and Bean Curd",
       "Scallion Soba Noodles"
@@ -514,7 +514,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Marinated Mince Pork with Egg",
     "titleZh": "台式卤肉饭配卤鸡蛋",
-    "image": "assets/food/asian-20261109.svg",
+    "image": "assets/food/asian-20261109-realistic-v2.webp",
     "items": [
       "Stir-fried Cabbage",
       "Steamed Rice",
@@ -545,7 +545,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Chicken Parmigiana",
     "titleZh": "意式芝士焗鸡排",
-    "image": "assets/food/western-20261109.svg",
+    "image": "assets/food/western-20261109-realistic-v2.webp",
     "items": [
       "Zucchini Cauliflower",
       "Mashed Potato",
@@ -576,7 +576,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Stir-fried Diced Vegetables, Scallion Oil Noodles, Baked Bean Curd",
     "titleZh": "五彩素丁，葱油捞面，香烤豆腐",
-    "image": "assets/food/vegetarian-20261109.svg",
+    "image": "assets/food/vegetarian-20261109-realistic-v2.webp",
     "items": [
       "Stir-fried Diced Vegetables",
       "Scallion Oil Noodles",
@@ -605,7 +605,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Sweet and Sour Fish",
     "titleZh": "酸甜五柳汁鱼柳",
-    "image": "assets/food/asian-20261110.svg",
+    "image": "assets/food/asian-20261110-realistic-v2.webp",
     "items": [
       "Choy Sum",
       "Steamed Rice",
@@ -636,7 +636,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Lasagna Bolognese",
     "titleZh": "肉酱千层面",
-    "image": "assets/food/western-20261110.svg",
+    "image": "assets/food/western-20261110-realistic-v2.webp",
     "items": [
       "Stir-fried Carrots and Green Beans",
       "Corn",
@@ -667,7 +667,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Stewed Tofu with Asparagus, Scallion Pancake, Fried Shredded Potatoes",
     "titleZh": "芦笋炖豆腐，葱油饼，炒土豆丝",
-    "image": "assets/food/vegetarian-20261110.svg",
+    "image": "assets/food/vegetarian-20261110-realistic-v2.webp",
     "items": [
       "Stewed Tofu with Asparagus",
       "Scallion Pancake",
@@ -696,7 +696,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Stir-fried Beef with Bell Pepper and Asparagus",
     "titleZh": "甜椒莴笋炒牛肉",
-    "image": "assets/food/asian-20261111.svg",
+    "image": "assets/food/asian-20261111-realistic-v2.webp",
     "items": [
       "Green Pak Choi",
       "Steamed Rice",
@@ -725,7 +725,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Ham & Cheese Sandwich",
     "titleZh": "火腿芝士三文治",
-    "image": "assets/food/western-20261111.svg",
+    "image": "assets/food/western-20261111-realistic-v2.webp",
     "items": [
       "Baby Corn & Vegetables",
       "Roasted Potatoes",
@@ -757,7 +757,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Rice Noodles in Mushroom Tofu Soup, Lettuce, Fried Egg",
     "titleZh": "三鲜豆腐菌菇米线，清炒生菜，煎蛋",
-    "image": "assets/food/vegetarian-20261111.svg",
+    "image": "assets/food/vegetarian-20261111-realistic-v2.webp",
     "items": [
       "Rice Noodles in Mushroom Tofu Soup",
       "Lettuce",
@@ -786,7 +786,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Pork Dumplings",
     "titleZh": "猪肉饺子",
-    "image": "assets/food/asian-20261112.svg",
+    "image": "assets/food/asian-20261112-realistic-v2.webp",
     "items": [
       "Leaf Lettuce",
       "Stir-fried Noodles",
@@ -817,7 +817,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Roasted Chicken Steak with Orange & Fennel",
     "titleZh": "茴香橙柳烤鸡扒",
-    "image": "assets/food/western-20261112.svg",
+    "image": "assets/food/western-20261112-realistic-v2.webp",
     "items": [
       "Mixed Vegetables",
       "Onion Butter Rice",
@@ -847,7 +847,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Baked Cheese Macaroni, Broccoli & Mini Frittata",
     "titleZh": "芝士焗通心粉，白汁焗西兰花，意式烘蛋",
-    "image": "assets/food/vegetarian-20261112.svg",
+    "image": "assets/food/vegetarian-20261112-realistic-v2.webp",
     "items": [
       "Baked Cheese Macaroni",
       "Broccoli",
@@ -878,7 +878,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Steamed Chicken with Mushroom",
     "titleZh": "家常香菇蒸鸡",
-    "image": "assets/food/asian-20261113.svg",
+    "image": "assets/food/asian-20261113-realistic-v2.webp",
     "items": [
       "Lettuce",
       "Steamed Rice",
@@ -907,7 +907,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Ham Tomato Soup with Macaroni",
     "titleZh": "火腿番茄汤通心粉",
-    "image": "assets/food/western-20261113.svg",
+    "image": "assets/food/western-20261113-realistic-v2.webp",
     "items": [
       "Stir-fried Carrot and Peas",
       "Corn",
@@ -937,7 +937,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Korean Zucchini Pancakes, Braised Tofu & Vegetables",
     "titleZh": "韩式西葫芦蛋饼配韩式豆腐和时蔬",
-    "image": "assets/food/vegetarian-20261113.svg",
+    "image": "assets/food/vegetarian-20261113-realistic-v2.webp",
     "items": [
       "Korean Zucchini Pancakes",
       "Braised Tofu & Vegetables"
@@ -966,7 +966,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Steamed Pork Minced Cake with Yam & Corn",
     "titleZh": "山药玉米蒸肉饼",
-    "image": "assets/food/asian-20261116.svg",
+    "image": "assets/food/asian-20261116-realistic-v2.webp",
     "items": [
       "Water Spinach",
       "Steamed Rice",
@@ -997,7 +997,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Roasted Chicken with Lemon Cheese Sauce",
     "titleZh": "柠檬芝士焗鸡",
-    "image": "assets/food/western-20261116.svg",
+    "image": "assets/food/western-20261116-realistic-v2.webp",
     "items": [
       "Mixed Vegetables",
       "Pesto Pasta",
@@ -1027,7 +1027,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Sautéed Yam, Bell Pepper & Fungus, Scrambled Eggs with Tomatoes, Vegetable Fried Rice",
     "titleZh": "山药木耳炒甜椒，番茄炒滑蛋，蔬菜粒炒饭",
-    "image": "assets/food/vegetarian-20261116.svg",
+    "image": "assets/food/vegetarian-20261116-realistic-v2.webp",
     "items": [
       "Sautéed Yam, Bell Pepper & Fungus",
       "Scrambled Eggs with Tomatoes",
@@ -1056,7 +1056,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Taiwanese Stir-fried Chicken",
     "titleZh": "台式三杯鸡",
-    "image": "assets/food/asian-20261117.svg",
+    "image": "assets/food/asian-20261117-realistic-v2.webp",
     "items": [
       "Stir-fried Choy Sum with Garlic",
       "Steamed Rice",
@@ -1085,7 +1085,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Pan-fried Pork with Garlic Butter",
     "titleZh": "蒜香牛油猪柳粒",
-    "image": "assets/food/western-20261117.svg",
+    "image": "assets/food/western-20261117-realistic-v2.webp",
     "items": [
       "Carrot & Long Beans",
       "Fried Potatoes with Onion",
@@ -1116,7 +1116,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Teriyaki Tofu, Udon Noodles, Vegetables",
     "titleZh": "日式金针菇豆腐，清炒包菜，素炒乌冬面",
-    "image": "assets/food/vegetarian-20261117.svg",
+    "image": "assets/food/vegetarian-20261117-realistic-v2.webp",
     "items": [
       "Teriyaki Tofu",
       "Udon Noodles",
@@ -1146,7 +1146,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Homemade BBQ Pork in Hong Kong Style",
     "titleZh": "港式叉烧",
-    "image": "assets/food/asian-20261118.svg",
+    "image": "assets/food/asian-20261118-realistic-v2.webp",
     "items": [
       "Leaf Lettuce",
       "Steamed Rice",
@@ -1176,7 +1176,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Fried Spaghetti with Black Pepper Beef",
     "titleZh": "黑椒牛肉炒意粉",
-    "image": "assets/food/western-20261118.svg",
+    "image": "assets/food/western-20261118-realistic-v2.webp",
     "items": [
       "Broccoli",
       "Corn",
@@ -1207,7 +1207,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Tomato Cheese Wraps, Broccoli, Fried Egg with Corn",
     "titleZh": "番茄芝士卷饼，清炒西兰花，玉米炒蛋",
-    "image": "assets/food/vegetarian-20261118.svg",
+    "image": "assets/food/vegetarian-20261118-realistic-v2.webp",
     "items": [
       "Tomato Cheese Wraps",
       "Broccoli",
@@ -1238,7 +1238,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Hainan Chicken Steak",
     "titleZh": "海南鸡扒",
-    "image": "assets/food/asian-20261119.svg",
+    "image": "assets/food/asian-20261119-realistic-v2.webp",
     "items": [
       "Green Pak Choi",
       "Steamed Rice",
@@ -1267,7 +1267,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Cheese Herb Baked Fish Fillet",
     "titleZh": "巴马臣芝士香草焗鱼柳",
-    "image": "assets/food/western-20261119.svg",
+    "image": "assets/food/western-20261119-realistic-v2.webp",
     "items": [
       "Sautéed Vegetables",
       "Mixed Beans",
@@ -1298,7 +1298,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Noodles with Garlic Vinegar Sauce, Marinated Egg, Vegetables",
     "titleZh": "金菇蒜醋拌刀削面，卤蛋，清炒小唐菜",
-    "image": "assets/food/vegetarian-20261119.svg",
+    "image": "assets/food/vegetarian-20261119-realistic-v2.webp",
     "items": [
       "Noodles with Garlic Vinegar Sauce",
       "Marinated Egg",
@@ -1328,7 +1328,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Stewed Beef with Tomato and Egg",
     "titleZh": "番茄滑蛋牛肉",
-    "image": "assets/food/asian-20261120.svg",
+    "image": "assets/food/asian-20261120-realistic-v2.webp",
     "items": [
       "Stir-fried Cabbage",
       "Steamed Rice",
@@ -1358,7 +1358,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Corn Sausage Cheese Pizza",
     "titleZh": "玉米番茄芝士披萨",
-    "image": "assets/food/western-20261120.svg",
+    "image": "assets/food/western-20261120-realistic-v2.webp",
     "items": [
       "Baby Corn & Vegetables",
       "Potato Wedges",
@@ -1390,7 +1390,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Stir-fried Peas, Fungus, Yam, Taro Fried Rice, Braised Tofu",
     "titleZh": "甜豆木耳山药，芋头菜心粒饭，红烧豆腐",
-    "image": "assets/food/vegetarian-20261120.svg",
+    "image": "assets/food/vegetarian-20261120-realistic-v2.webp",
     "items": [
       "Stir-fried Peas, Fungus, Yam",
       "Taro Fried Rice",
@@ -1419,7 +1419,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Garlic Flavor Pork",
     "titleZh": "蒜香猪柳",
-    "image": "assets/food/asian-20261123.svg",
+    "image": "assets/food/asian-20261123-realistic-v2.webp",
     "items": [
       "Choy Sum",
       "Steamed Rice",
@@ -1450,7 +1450,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Chicken in Tomato Cream Sauce",
     "titleZh": "番茄奶油炖鸡",
-    "image": "assets/food/western-20261123.svg",
+    "image": "assets/food/western-20261123-realistic-v2.webp",
     "items": [
       "Vegetables & Baby Corn",
       "Potato Wedges",
@@ -1480,7 +1480,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Fried Bean Curd in Sweet Sour Sauce, Fried Egg Rice, Carrot and Long Beans",
     "titleZh": "素咕噜肉，蛋炒饭，胡萝卜豆角",
-    "image": "assets/food/vegetarian-20261123.svg",
+    "image": "assets/food/vegetarian-20261123-realistic-v2.webp",
     "items": [
       "Fried Bean Curd in Sweet Sour Sauce",
       "Fried Egg Rice",
@@ -1510,7 +1510,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Sautéed Beef with Cauliflower",
     "titleZh": "台山菜花炒牛肉",
-    "image": "assets/food/asian-20261124.svg",
+    "image": "assets/food/asian-20261124-realistic-v2.webp",
     "items": [
       "Green Pak Choi",
       "Steamed Rice",
@@ -1539,7 +1539,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Lasagna Bolognese",
     "titleZh": "肉酱千层面",
-    "image": "assets/food/western-20261124.svg",
+    "image": "assets/food/western-20261124-realistic-v2.webp",
     "items": [
       "Stir-fried Carrots and Green Beans",
       "Corn",
@@ -1570,7 +1570,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Udon in Tomato Curry Soup, Boiled Egg & Tempura",
     "titleZh": "番茄咖喱汤乌冬，水煮蛋和天妇罗",
-    "image": "assets/food/vegetarian-20261124.svg",
+    "image": "assets/food/vegetarian-20261124-realistic-v2.webp",
     "items": [
       "Udon in Tomato Curry Soup",
       "Boiled Egg",
@@ -1600,7 +1600,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Marinated Mince Pork with Egg",
     "titleZh": "台式卤肉饭配卤鸡蛋",
-    "image": "assets/food/asian-20261125.svg",
+    "image": "assets/food/asian-20261125-realistic-v2.webp",
     "items": [
       "Chinese Cabbage",
       "Steamed Rice"
@@ -1630,7 +1630,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "Hot Dog",
     "titleZh": "热狗包",
-    "image": "assets/food/western-20261125.svg",
+    "image": "assets/food/western-20261125-realistic-v2.webp",
     "items": [
       "Mixed Vegetables",
       "French Fries"
@@ -1660,7 +1660,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Thai Style Fried Eggplant, Water Spinach, Samosa & Roasted Corn",
     "titleZh": "泰式素肉碎茄子，豆酱通菜，咖喱角配泰式烤玉米饼",
-    "image": "assets/food/vegetarian-20261125.svg",
+    "image": "assets/food/vegetarian-20261125-realistic-v2.webp",
     "items": [
       "Thai Style Fried Eggplant",
       "Water Spinach",
@@ -1689,7 +1689,7 @@ const ALL_MENU_ITEMS = [
     "set": "Festival",
     "title": "Thanksgiving Menu — Roasted Turkey",
     "titleZh": "感恩节菜单 — 传统烤火鸡",
-    "image": "assets/food/festival-20261126.svg",
+    "image": "assets/food/festival-20261126-realistic-v2.webp",
     "items": [
       "Sausage Platter",
       "Mixed Vegetables",
@@ -1723,7 +1723,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Garlic Pasta, Plain Nuggets & Vegetables",
     "titleZh": "蒜香意面，素鸡块，时蔬",
-    "image": "assets/food/vegetarian-20261126.svg",
+    "image": "assets/food/vegetarian-20261126-realistic-v2.webp",
     "items": [
       "Garlic Pasta",
       "Plain Nuggets",
@@ -1753,7 +1753,7 @@ const ALL_MENU_ITEMS = [
     "set": "Asian",
     "title": "Sweet and Sour Pork with Pineapple",
     "titleZh": "菠萝咕噜肉",
-    "image": "assets/food/asian-20261130.svg",
+    "image": "assets/food/asian-20261130-realistic-v2.webp",
     "items": [
       "Choy Sum",
       "Steamed Rice",
@@ -1784,7 +1784,7 @@ const ALL_MENU_ITEMS = [
     "set": "Western",
     "title": "BBQ Chicken",
     "titleZh": "BBQ烤鸡腿",
-    "image": "assets/food/western-20261130.svg",
+    "image": "assets/food/western-20261130-realistic-v2.webp",
     "items": [
       "Zucchini & Carrot",
       "Roasted Potato",
@@ -1814,7 +1814,7 @@ const ALL_MENU_ITEMS = [
     "set": "Vegetarian",
     "title": "Mini Frittata & Cheese Toast, Vegetables",
     "titleZh": "迷你意式烘鸡蛋，芝士烤吐司，时蔬",
-    "image": "assets/food/vegetarian-20261130.svg",
+    "image": "assets/food/vegetarian-20261130-realistic-v2.webp",
     "items": [
       "Mini Frittata",
       "Cheese Toast",

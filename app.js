@@ -387,7 +387,7 @@ function makeMealCard(item, mode) {
 
   image.loading = "lazy";
   image.src = item.image;
-  image.alt = `${item.title} — ingredient illustration, not a meal photo`;
+  image.alt = `${item.title} — AI-generated realistic food illustration`;
   imageButton.setAttribute("aria-pressed", String(selected));
   imageButton.setAttribute(
     "aria-label",
@@ -512,7 +512,7 @@ function makePairChoice(childName, item) {
   const image = document.createElement("img");
   image.loading = "lazy";
   image.src = item.image;
-  image.alt = `${item.title} — ingredient illustration, not a meal photo`;
+  image.alt = `${item.title} — AI-generated realistic food illustration`;
 
   const child = document.createElement("span");
   child.className = "match-child";

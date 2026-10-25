@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#17464c">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="styles.css?v=menu-202611-v1">
+    <link rel="stylesheet" href="styles.css?v=menu-202611-realistic-v2">
   </head>
   <body>
     <div class="app-shell">
@@ -41,6 +41,7 @@
           <div class="score-strip" id="scoreStrip"></div>
         </section>
 
+        <p class="image-caption">AI food images · 食物图片为 AI 示意</p>
         <section class="menu-layout" id="menuLayout" aria-label="Lunch choices"></section>
 
         <section class="results-layout hidden" id="resultsLayout" aria-label="Shared lunch choices">
@@ -63,7 +64,7 @@
 
         <details class="menu-reference">
           <summary>Original menu image · 查看当周原图</summary>
-          <p class="source-note">Nutrition and allergens are transcribed as printed. Illustrations show ingredient themes. 营养和过敏原按原图录入；插图仅为食材示意。</p>
+          <p class="source-note">Nutrition and allergens are transcribed as printed. Food images are AI-generated menu visualizations. 营养和过敏原按原图录入；食物图片为 AI 写实示意。</p>
           <a id="sourceLink" href="assets/source/menu-20261102.jpg" target="_blank" rel="noopener"><img id="sourceImage" src="assets/source/menu-20261102.jpg" alt="Original November 2026 lunch menu"></a>
         </details>
       </main>
@@ -96,8 +97,8 @@
       </article>
     </template>
 
-    <script src="menu-data.js?v=menu-202611-v1"></script>
-    <script src="app.js?v=menu-202611-v1"></script>
+    <script src="menu-data.js?v=menu-202611-realistic-v2"></script>
+    <script src="app.js?v=menu-202611-realistic-v2"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {

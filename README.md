@@ -25,9 +25,9 @@ November 2026 includes five menu weeks, 56 selectable lunch sets, and the origin
 - November 27: Thanksgiving holiday.
 - November 30: Monday only; December dates were not supplied.
 
-`menu-data.js` holds `MENU_WEEKS` and `ALL_MENU_ITEMS`. Keep each meal ID unique by date and set. Source images live in `assets/source/`; code-native ingredient illustrations live in `assets/food/` and are labelled as illustrations.
+`menu-data.js` holds `MENU_WEEKS` and `ALL_MENU_ITEMS`. Keep each meal ID unique by date and set. Source images live in `assets/source/`; AI-generated realistic food images live in `assets/food/` and are labelled as AI food visualizations.
 
-Nutrition and allergens follow the source as printed. Nov 6 Western nutrition repeats Nov 3 Western values in the source; Nov 18 Western has 343 kcal in English and 341 kcal in Chinese (English value displayed). No soup is listed for Nov 25 Asian or Western. Card notes and source links preserve these details for review. Chinese text is normalized for readability, using the English dish description where the photograph is unclear.
+Nutrition and allergens follow the source as printed. Nov 6 Western nutrition repeats Nov 3 Western values in the source; Nov 18 Western has 343 kcal in English and 341 kcal in Chinese (English value displayed). No soup is listed for Nov 25 Asian or Western. Card notes and source links preserve these details for review. Food imagery was replaced with individual photorealistic food images, compressed to WebP; images show menu concepts rather than actual school servings. The storage keys and meal IDs are unchanged, preserving saved picks. Chinese text is normalized for readability, using the English dish description where the photograph is unclear.
 
 When updating menus, change the versioned script/style URLs in `index.html` and `sw.js`, update the service-worker cache name, and run `npm run check`. The service worker precaches all current menu weeks for offline use.
 
