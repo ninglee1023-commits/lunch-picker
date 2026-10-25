@@ -2,6 +2,12 @@
 
 Static lunch picker for Luca and Noah.
 
+## Weekly Results
+
+Children can mark multiple meals they like. Results include every combination in which Luca and Noah each have one liked meal on the same calendar date, whether the meals are identical or different. Options are grouped by date and always display both children and one portion each. The parent confirms at most one pair per week; choosing another pair replaces that week's final decision without changing either child's liked meals. No pair is selected automatically. Copy result includes only the confirmed weekly pair.
+
+This results update keeps all existing meal IDs, weekly storage keys, picks and compatible parent choices. On first load, a verbatim snapshot of existing weekly state is saved under `aisg-lunch-backup-weekly-results-v3` before any state writes. Rendering results does not remove saved choices.
+
 ## Local Use
 
 Run:

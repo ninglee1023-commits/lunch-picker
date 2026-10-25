@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#17464c">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="styles.css?v=menu-202611-realistic-v2">
+    <link rel="stylesheet" href="styles.css?v=menu-202611-weekly-v3">
   </head>
   <body>
     <div class="app-shell">
@@ -47,17 +47,18 @@
         <section class="results-layout hidden" id="resultsLayout" aria-label="Shared lunch choices">
           <div class="results-main">
             <div class="section-heading">
-              <p class="mode-label">Orderable matches</p>
-              <h2 id="matchCount">No orderable matches yet</h2>
+              <p class="mode-label">Weekly options · 本周备选</p>
+              <h2 id="matchCount">本周备选组合</h2>
+              <p class="weekly-rule">两人在同一天各有喜欢的餐即可备选，套餐可以相同或不同。每周只确认一组，决定权在你。</p>
             </div>
             <div class="results-grid" id="matchGrid"></div>
           </div>
           <aside class="decision-panel">
-            <p class="mode-label">Parent pick</p>
-            <h2 id="parentPickTitle">No final choice selected</h2>
-            <p id="parentPickMeta">Choose one matching lunch card when both children have finished.</p>
+            <p class="mode-label">本周最终安排 · 每人 1 份</p>
+            <h2 id="parentPickTitle">本周尚未确认</h2>
+            <p id="parentPickMeta">从同日备选中选择一组。</p>
             <div class="divider"></div>
-            <p class="mode-label">Only one child selected</p>
+            <p class="mode-label">未配对的喜欢套餐（保留）</p>
             <div class="solo-list" id="soloList"></div>
           </aside>
         </section>
@@ -97,8 +98,8 @@
       </article>
     </template>
 
-    <script src="menu-data.js?v=menu-202611-realistic-v2"></script>
-    <script src="app.js?v=menu-202611-realistic-v2"></script>
+    <script src="menu-data.js?v=menu-202611-weekly-v3"></script>
+    <script src="app.js?v=menu-202611-weekly-v3"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {

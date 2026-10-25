@@ -728,3 +728,21 @@ h3 {
 /* Photorealistic food artwork, November 2026 */
 .image-caption { margin: 12px 0 -8px; color: var(--muted); font-size: .75rem; }
 @media print { .image-caption { display: none; } }
+
+/* One parent-confirmed pair per week, with all same-day options grouped by date. */
+.results-grid { display: block; }
+.candidate-day { margin: 0 0 24px; }
+.candidate-day-heading { margin: 0 0 12px; padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--accent-strong); }
+.candidate-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.candidate-options .same-day-match { grid-column: auto; }
+.weekly-rule { color: var(--muted); font-size: .9rem; line-height: 1.6; }
+.weekly-choice-status { margin: 0; padding: 12px; border-top: 1px solid var(--line); color: var(--accent-strong); font-weight: 700; }
+.is-parent-pick .weekly-choice-status { color: #6f4a00; background: #fff2c5; }
+#parentPickMeta { white-space: pre-line; }
+@media (max-width: 1180px) { .candidate-options { grid-template-columns: 1fr; } }
+@media (max-width: 820px) {
+  .candidate-options .match-pair-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .candidate-options .match-choice + .match-choice { border-top: 0; border-left: 1px solid var(--line); }
+  .match-choice { min-width: 0; padding: 10px; }
+}
+@media print { .candidate-day { break-inside: avoid; } .weekly-choice-status { display: none; } }

@@ -1,8 +1,8 @@
-importScripts('./menu-data.js?v=menu-202611-realistic-v2');
-const CACHE_NAME = 'aisg-lunch-picker-menu-202611-realistic-v2';
+importScripts('./menu-data.js?v=menu-202611-weekly-v3');
+const CACHE_NAME = 'aisg-lunch-picker-menu-202611-weekly-v3';
 const APP_ASSETS = [
-  './', './index.html', './styles.css?v=menu-202611-realistic-v2',
-  './app.js?v=menu-202611-realistic-v2', './menu-data.js?v=menu-202611-realistic-v2',
+  './', './index.html', './styles.css?v=menu-202611-weekly-v3',
+  './app.js?v=menu-202611-weekly-v3', './menu-data.js?v=menu-202611-weekly-v3',
   './manifest.webmanifest', './icons/icon-180.png', './icons/icon-192.png',
   './icons/icon-512.png', './icons/icon-maskable-512.png',
   ...MENU_WEEKS.map((week) => './' + week.source),

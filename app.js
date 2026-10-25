@@ -12,6 +12,25 @@ let activeWeek = MENU_WEEKS.find((week) => week.id === activeWeekId);
 let MENU_ITEMS = ALL_MENU_ITEMS.filter((item) => activeWeek.days.some((day) => day.date === item.date));
 let STORAGE_KEY = `aisg-lunch-picker-er-sha-${activeWeekId}-luca-noah`;
 
+// Preserve a verbatim snapshot before this results update can save any state.
+// The original weekly keys and meal IDs remain unchanged.
+function backupSavedChoices() {
+  try {
+    const backupKey = "aisg-lunch-backup-weekly-results-v3";
+    if (localStorage.getItem(backupKey)) return;
+    const values = {};
+    MENU_WEEKS.forEach((week) => {
+      const key = `aisg-lunch-picker-er-sha-${week.id}-luca-noah`;
+      const raw = localStorage.getItem(key);
+      if (raw !== null) values[key] = raw;
+    });
+    if (Object.keys(values).length) {
+      localStorage.setItem(backupKey, JSON.stringify({ savedAt: new Date().toISOString(), values }));
+    }
+  } catch {}
+}
+backupSavedChoices();
+
 const CHILD_KEYS = ["kid1", "kid2"];
 
 const defaultState = {
@@ -111,10 +130,20 @@ function getMatchKey(match) {
 
 function describeMatch(match) {
   if (!match) return "Not selected";
-  if (match.type === "exact") {
-    return `${match.day} ${match.date}: both chose ${match.item.title} (${match.item.set})`;
-  }
-  return `${match.day} ${match.date}: ${state.names.kid1} - ${match.kid1.title} (${match.kid1.set}); ${state.names.kid2} - ${match.kid2.title} (${match.kid2.set})`;
+  const { kid1, kid2 } = getMatchMeals(match);
+  return `${match.day} ${match.date}\n${state.names.kid1}: ${kid1.title} (${kid1.set}) × 1\n${state.names.kid2}: ${kid2.title} (${kid2.set}) × 1`;
+}
+
+function getMatchMeals(match) {
+  return match.type === "exact"
+    ? { kid1: match.item, kid2: match.item }
+    : { kid1: match.kid1, kid2: match.kid2 };
+}
+
+function getCandidateDays(matches = getMatches()) {
+  return activeWeek.days
+    .map((day) => ({ ...day, matches: matches.filter((match) => match.date === day.date) }))
+    .filter((day) => day.matches.length > 0);
 }
 
 function getParentPickMatch(matches = getMatches()) {
@@ -271,6 +300,7 @@ function togglePick(itemId) {
 
 function setParentPick(matchKey) {
   const normalizedKey = normalizeParentPick(matchKey);
+  if (!getMatches().some((match) => getMatchKey(match) === normalizedKey)) return;
   state.parentPick = normalizeParentPick(state.parentPick) === normalizedKey ? null : normalizedKey;
   saveState();
   render();
@@ -291,13 +321,13 @@ function render() {
   elements.resultsLayout.classList.toggle("active", isResults);
 
   if (isResults) {
-    elements.modeLabel.textContent = "Final decision";
-    elements.modeTitle.textContent = "Choose from exact same-set matches or same-day matches.";
+    elements.modeLabel.textContent = "Weekly decision · 本周安排";
+    elements.modeTitle.textContent = "每周每人一餐：从同一天的组合中，由你选定一组。";
     renderResults();
   } else {
     const kid = currentKidKey();
     elements.modeLabel.textContent = `${state.names[kid]} choices`;
-    elements.modeTitle.textContent = `Select every lunch ${state.names[kid]} would enjoy.`;
+    elements.modeTitle.textContent = `勾选所有 ${state.names[kid]} 喜欢的餐，最后由家长每周选定一份。`;
     renderMenu();
   }
 }
@@ -317,7 +347,7 @@ function renderScores() {
   elements.scoreStrip.replaceChildren(
     makeScore(state.picks.kid1.length, state.names.kid1),
     makeScore(state.picks.kid2.length, state.names.kid2),
-    makeScore(matches.length, "Orderable")
+    makeScore(getCandidateDays(matches).length, "可选日期")
   );
 }
 
@@ -453,24 +483,19 @@ function makeMealCard(item, mode) {
 }
 
 function makeMatchCard(match) {
-  if (match.type === "exact") return makeMealCard(match.item, "results");
-
   const key = getMatchKey(match);
+  const { kid1, kid2 } = getMatchMeals(match);
   const selected = normalizeParentPick(state.parentPick) === key;
   const node = document.createElement("article");
   node.className = "meal-card match-card same-day-match";
+  node.dataset.matchKey = key;
   node.classList.toggle("is-parent-pick", selected);
 
   const button = document.createElement("button");
   button.className = "match-pick-button";
   button.type = "button";
   button.setAttribute("aria-pressed", String(selected));
-  button.setAttribute("aria-label", `Choose ${match.day} same-day match as final lunch`);
-
-  const selectedMark = document.createElement("span");
-  selectedMark.className = "selected-mark";
-  selectedMark.setAttribute("aria-hidden", "true");
-  selectedMark.textContent = "Final pick";
+  button.setAttribute("aria-label", `Choose ${match.date} for this week: ${state.names.kid1} ${kid1.title}; ${state.names.kid2} ${kid2.title}`);
 
   const summary = document.createElement("div");
   summary.className = "match-summary";
@@ -479,27 +504,30 @@ function makeMatchCard(match) {
   meta.className = "meal-meta";
   const dayPill = document.createElement("span");
   dayPill.className = "day-pill";
-  dayPill.textContent = match.day;
+  dayPill.textContent = match.date;
   const setPill = document.createElement("span");
   setPill.className = "set-pill festival";
-  setPill.textContent = "Same day";
+  setPill.textContent = match.type === "exact" ? "相同套餐" : "不同套餐";
   meta.append(dayPill, setPill);
 
   const title = document.createElement("h3");
-  title.textContent = `${match.day} lunch match`;
+  title.textContent = `${state.names.kid1} ＋ ${state.names.kid2}`;
   const detail = document.createElement("p");
   detail.className = "match-detail";
-  detail.textContent = `${match.date} - order one set for each child.`;
+  detail.textContent = "同一天，两人各 1 份；点击选为本周安排。";
 
   const pairGrid = document.createElement("div");
   pairGrid.className = "match-pair-grid";
   pairGrid.append(
-    makePairChoice(state.names.kid1, match.kid1),
-    makePairChoice(state.names.kid2, match.kid2)
+    makePairChoice(state.names.kid1, kid1),
+    makePairChoice(state.names.kid2, kid2)
   );
 
+  const choiceStatus = document.createElement("p");
+  choiceStatus.className = "weekly-choice-status";
+  choiceStatus.textContent = selected ? "✓ 已确认为本周安排 · 每人 1 份" : "选择这一组作为本周安排";
   summary.append(meta, title, detail);
-  button.append(selectedMark, summary, pairGrid);
+  button.append(summary, pairGrid, choiceStatus);
   button.addEventListener("click", () => setParentPick(key));
   node.append(button);
   return node;
@@ -523,47 +551,51 @@ function makePairChoice(childName, item) {
 
   const meta = document.createElement("span");
   meta.className = "match-choice-meta";
-  meta.textContent = item.set;
+  meta.textContent = `${item.set} · 1 份`;
 
-  node.append(image, child, title, meta);
+  const chinese = document.createElement("span");
+  chinese.className = "match-choice-meta";
+  chinese.textContent = item.titleZh;
+  node.append(image, child, title, chinese, meta);
   return node;
 }
 
 function renderResults() {
   const matches = getMatches();
-  const matchKeys = new Set(matches.map(getMatchKey));
-  const parentPickKey = normalizeParentPick(state.parentPick);
-  if (parentPickKey && !matchKeys.has(parentPickKey)) {
-    state.parentPick = null;
-    saveState();
-  } else {
-    state.parentPick = parentPickKey;
-  }
+  const candidateDays = getCandidateDays(matches);
 
   elements.matchGrid.replaceChildren();
   elements.soloList.replaceChildren();
-  elements.matchCount.textContent = matches.length === 1
-    ? "1 orderable match"
-    : `${matches.length} orderable matches`;
+  elements.matchCount.textContent = `${candidateDays.length} 个可选日期 · ${matches.length} 个备选组合`;
 
   if (matches.length === 0) {
     const empty = document.createElement("div");
     empty.className = "empty-state";
-    empty.textContent = "No exact same-set or same-day match yet. Switch back to each child and add more lunches they would accept.";
+    empty.textContent = "本周暂时没有共同可选日期。两人可继续勾选喜欢的餐；只要同一天各有一份喜欢的餐，相同或不同套餐都可进入备选。现有选择会保留。";
     elements.matchGrid.append(empty);
   } else {
-    matches.forEach((match) => elements.matchGrid.append(makeMatchCard(match)));
+    candidateDays.forEach((day) => {
+      const group = document.createElement("section");
+      group.className = "candidate-day";
+      group.dataset.date = day.date;
+      const heading = document.createElement("h3");
+      heading.className = "candidate-day-heading";
+      heading.textContent = `${day.day} · ${day.date} · ${day.matches.length} 个组合`;
+      const options = document.createElement("div");
+      options.className = "candidate-options";
+      day.matches.forEach((match) => options.append(makeMatchCard(match)));
+      group.append(heading, options);
+      elements.matchGrid.append(group);
+    });
   }
 
   const parentPick = getParentPickMatch(matches);
   if (parentPick) {
-    elements.parentPickTitle.textContent = parentPick.type === "exact"
-      ? parentPick.item.title
-      : `${parentPick.day} lunch match`;
+    elements.parentPickTitle.textContent = `${parentPick.day} · ${parentPick.date}`;
     elements.parentPickMeta.textContent = describeMatch(parentPick);
   } else {
-    elements.parentPickTitle.textContent = "No final choice selected";
-    elements.parentPickMeta.textContent = "Choose one exact or same-day match when both children have finished.";
+    elements.parentPickTitle.textContent = "本周尚未确认";
+    elements.parentPickMeta.textContent = "从备选中选择一组，即确定本周两人各一份餐。系统不会自动替你决定。";
   }
 
   renderSoloList(matches);
@@ -586,7 +618,7 @@ function renderSoloList(matches) {
 
   if (solo.length === 0) {
     const empty = document.createElement("p");
-    empty.textContent = "None";
+    empty.textContent = "没有未配对的喜欢套餐。";
     elements.soloList.append(empty);
     return;
   }
@@ -607,23 +639,14 @@ function buildSummary() {
   const matches = getMatches();
   const lines = [
     `AISG Lunch Picker - Er Sha · ${activeWeek.label}`,
-    `${state.names.kid1}: ${state.picks.kid1.length} choices`,
-    `${state.names.kid2}: ${state.picks.kid2.length} choices`,
+    "本周安排：每人 1 份餐，同一天。",
     "",
-    "Orderable matches:"
+    "家长确认的最终安排："
   ];
 
-  if (matches.length === 0) {
-    lines.push("None yet");
-  } else {
-    matches.forEach((match) => {
-      lines.push(`- ${describeMatch(match)}`);
-    });
-  }
-
   const parentPick = getParentPickMatch(matches);
-  lines.push("", "Parent pick:");
-  lines.push(parentPick ? describeMatch(parentPick) : "Not selected");
+  lines.push(parentPick ? describeMatch(parentPick) : "本周尚未确认；备选组合不代表已下单。" );
+  lines.push("", `可选日期：${getCandidateDays(matches).length}；备选组合：${matches.length}`);
 
   return lines.join("\n");
 }
