@@ -12,6 +12,8 @@ const types = {
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
   ".png": "image/png",
+  ".webp": "image/webp",
+  ".webmanifest": "application/manifest+json",
   ".svg": "image/svg+xml"
 };
 

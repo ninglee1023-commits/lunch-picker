@@ -7,13 +7,13 @@
     <meta name="theme-color" content="#17464c">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="styles.css?v=garden-top-20260527">
+    <link rel="stylesheet" href="styles.css?v=menu-202611-v1">
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
         <div>
-          <p class="eyebrow">Er Sha · Aug 24-28, 2026</p>
+          <p class="eyebrow" id="weekLabel">Er Sha · November 2026</p>
           <h1>AISG Lunch Picker</h1>
         </div>
         <div class="toolbar" aria-label="App actions">
@@ -25,6 +25,7 @@
 
       <main>
         <section class="control-band" aria-label="Chooser controls">
+          <label class="week-control" for="weekSelect">Menu week · 菜单周<select id="weekSelect" aria-label="Menu week"></select></label>
           <div class="segmented" role="tablist" aria-label="Current view">
             <button class="segment active" type="button" data-view="kid1" role="tab" aria-selected="true">Child 1</button>
             <button class="segment" type="button" data-view="kid2" role="tab" aria-selected="false">Child 2</button>
@@ -61,8 +62,9 @@
         </section>
 
         <details class="menu-reference">
-          <summary>Original menu image</summary>
-          <img src="assets/source/original-menu.jpg" alt="Original AISG Er Sha lunch menu for Aug 24-28, 2026">
+          <summary>Original menu image · 查看当周原图</summary>
+          <p class="source-note">Nutrition and allergens are transcribed as printed. Illustrations show ingredient themes. 营养和过敏原按原图录入；插图仅为食材示意。</p>
+          <a id="sourceLink" href="assets/source/menu-20261102.jpg" target="_blank" rel="noopener"><img id="sourceImage" src="assets/source/menu-20261102.jpg" alt="Original November 2026 lunch menu"></a>
         </details>
       </main>
     </div>
@@ -94,11 +96,12 @@
       </article>
     </template>
 
-    <script src="app.js?v=menu-20260824"></script>
+    <script src="menu-data.js?v=menu-202611-v1"></script>
+    <script src="app.js?v=menu-202611-v1"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker.register("./sw.js").catch(() => {});
+          navigator.serviceWorker.register("./sw.js").then((registration) => registration.update()).catch(() => {});
         });
       }
     </script>

@@ -714,3 +714,13 @@ h3 {
     box-shadow: none;
   }
 }
+
+/* November multi-week menus */
+.control-band { justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.week-control { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; font-weight: 700; color: var(--accent-strong); }
+.week-control select { font: inherit; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); max-width: 100%; }
+.closed-day { min-height: 180px; line-height: 1.8; background: #f1eee6; }
+.source-note { font-size: .76rem; color: #765b32; line-height: 1.5; margin: 10px 0; }
+.source-link { font-size: .75rem; color: var(--accent-strong); display: inline-block; margin-top: 10px; }
+.item-list { line-height: 1.5; }
+@media(max-width: 600px) { .week-control, .week-control select { width: 100%; } .segmented { width: 100%; } .segment { min-width: 0; flex: 1; } }

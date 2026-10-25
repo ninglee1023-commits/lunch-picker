@@ -16,14 +16,20 @@ Open:
 http://127.0.0.1:8081/
 ```
 
-## Weekly Update Flow
+## Menu Updates
 
-1. Save the new menu image in `assets/source/original-menu.jpg`.
-2. Update the `MENU_ITEMS` array in `app.js` with the new days, dishes, allergens, and nutrition.
-3. Generate one new food photo per lunch set, or one clean contact sheet and crop it.
-4. Save final web images in `assets/food/`.
-5. Update each menu item's `image` path.
-6. Change `STORAGE_KEY` in `app.js` for the new week so Luca and Noah start with clean choices.
+November 2026 includes five menu weeks, 56 selectable lunch sets, and the original source image for each week. Use the week selector to switch weeks. Luca, Noah, and parent choices are stored separately for each week. Earlier August choices remain in browser storage under their previous key.
+
+- November 2: Schoolwide PD (no class).
+- November 26: Thanksgiving festival menu plus a vegetarian set.
+- November 27: Thanksgiving holiday.
+- November 30: Monday only; December dates were not supplied.
+
+`menu-data.js` holds `MENU_WEEKS` and `ALL_MENU_ITEMS`. Keep each meal ID unique by date and set. Source images live in `assets/source/`; code-native ingredient illustrations live in `assets/food/` and are labelled as illustrations.
+
+Nutrition and allergens follow the source as printed. Nov 6 Western nutrition repeats Nov 3 Western values in the source; Nov 18 Western has 343 kcal in English and 341 kcal in Chinese (English value displayed). No soup is listed for Nov 25 Asian or Western. Card notes and source links preserve these details for review. Chinese text is normalized for readability, using the English dish description where the photograph is unclear.
+
+When updating menus, change the versioned script/style URLs in `index.html` and `sw.js`, update the service-worker cache name, and run `npm run check`. The service worker precaches all current menu weeks for offline use.
 
 ## Voice Reading
 
