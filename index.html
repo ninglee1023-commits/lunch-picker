@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#17464c">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="styles.css?v=menu-202611-weekly-v3">
+    <link rel="stylesheet" href="styles.css?v=menu-202611-family-sync-v4">
   </head>
   <body>
     <div class="app-shell">
@@ -18,12 +18,40 @@
         </div>
         <div class="toolbar" aria-label="App actions">
           <button class="ghost-button" id="copySummary" type="button">Copy result</button>
+          <button class="ghost-button" id="exportChoices" type="button">匯出記錄</button>
           <button class="ghost-button" id="printPage" type="button">Print</button>
           <button class="danger-button" id="resetWeek" type="button">Reset</button>
         </div>
       </header>
 
       <main>
+        <section class="sync-band" aria-label="Family synchronization">
+          <p id="syncStatus" role="status">只儲存在這部裝置，尚未啟用同步。</p>
+          <details id="familySyncPanel" class="sync-panel">
+            <summary>家庭同步設定</summary>
+            <p>在有記錄的 iPad 建立家庭，再於其他裝置輸入同一家庭碼。首次連接會備份並合併本機喜好；如最終安排不同，先保留已同步的安排，你仍可改選。</p>
+            <div id="syncConnect">
+              <button class="ghost-button" id="syncCreate" type="button">建立家庭並同步本機記錄</button>
+              <form id="syncJoinForm" class="sync-join-form">
+                <label for="syncCodeInput">已有家庭碼</label>
+                <input id="syncCodeInput" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX-XXXX-XXXX-XXXX" aria-label="家庭同步碼">
+                <button class="ghost-button" id="syncJoin" type="submit">加入家庭並合併記錄</button>
+              </form>
+            </div>
+            <div id="syncConnected" hidden>
+              <p>家庭碼：<output id="familyCode"></output></p>
+              <div class="sync-actions">
+                <button class="ghost-button" id="syncCopyCode" type="button">複製家庭碼</button>
+                <button class="ghost-button" id="syncCopyLink" type="button">複製連接連結</button>
+                <button class="ghost-button" id="syncNow" type="button">立即同步</button>
+                <button class="ghost-button" id="syncDisconnect" type="button">中斷本機同步</button>
+              </div>
+              <p id="syncPending"></p>
+              <p>家庭碼用於解密，請保管好，並只分享給家人。中斷同步不會刪除本機記錄。</p>
+            </div>
+            <p id="syncMessage" role="status"></p>
+          </details>
+        </section>
         <section class="control-band" aria-label="Chooser controls">
           <label class="week-control" for="weekSelect">Menu week · 菜单周<select id="weekSelect" aria-label="Menu week"></select></label>
           <div class="segmented" role="tablist" aria-label="Current view">
@@ -98,8 +126,12 @@
       </article>
     </template>
 
-    <script src="menu-data.js?v=menu-202611-weekly-v3"></script>
-    <script src="app.js?v=menu-202611-weekly-v3"></script>
+    <script src="menu-data.js?v=menu-202611-family-sync-v4"></script>
+    <script src="app.js?v=menu-202611-family-sync-v4"></script>
+    <script src="sync-config.js?v=menu-202611-family-sync-v4"></script>
+    <script src="sync-crypto.js?v=menu-202611-family-sync-v4"></script>
+    <script src="sync-client.js?v=menu-202611-family-sync-v4"></script>
+    <script src="sync-ui.js?v=menu-202611-family-sync-v4"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {

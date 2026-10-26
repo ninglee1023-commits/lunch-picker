@@ -2,6 +2,14 @@
 
 Static lunch picker for Luca and Noah.
 
+## Family-code synchronization
+
+Open Family sync settings on the iPad that already has saved choices and create a family. Existing weekly keys and meal IDs stay unchanged; the app first saves a verbatim pre-sync snapshot, then uploads encrypted per-item changes. Enter the same family code on another device, or open the copied connection link and confirm joining. Local liked meals merge; an imported final choice only fills an empty cloud choice. Later user changes synchronize every few seconds while the app is visible, with a durable local outbox for offline edits and idempotent retries. One parent-confirmed pair per week remains the final ordering rule.
+
+The 24-character family code is generated locally with Web Crypto. HKDF-derived AES-GCM encrypts the week, child, meal and choice before upload; HMAC indexes and a distinct bearer capability authorize the encrypted API. The service cannot read the choices or the family code. Keep the code within the family; it is required for another device to decrypt records. `sync-config.js` contains only the public service URL. Never put family codes, administrative credentials, or encryption keys in source.
+
+The service source and schema are maintained separately in the task's `output/lunch-sync-service` checkout. The frontend's pre-sync backup is `aisg-lunch-before-family-sync-v4`. Export choices downloads weekly records only, excluding sync codes and credentials. Disconnect keeps local choices. Storage remains local-only until a family is created or joined.
+
 ## Weekly Results
 
 Children can mark multiple meals they like. Results include every combination in which Luca and Noah each have one liked meal on the same calendar date, whether the meals are identical or different. Options are grouped by date and always display both children and one portion each. The parent confirms at most one pair per week; choosing another pair replaces that week's final decision without changing either child's liked meals. No pair is selected automatically. Copy result includes only the confirmed weekly pair.
@@ -60,4 +68,4 @@ For your current workflow, static hosting is enough:
 - Noah chooses on the Noah tab.
 - The Results tab shows orderable matches for the parent decision. A match can be the exact same set, or different sets that are available on the same day.
 
-Important: choices are stored in that browser only. If you want Luca and Noah to choose on different devices and have results sync automatically, the app needs a small backend database.
+Choices are stored in the local browser and, after explicitly creating or joining a family, synchronized through the encrypted family service. Different devices must join the same family code. A new device without that code cannot read the family records.

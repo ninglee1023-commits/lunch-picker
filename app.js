@@ -279,6 +279,7 @@ function setView(view) {
 }
 
 function togglePick(itemId) {
+  const previousParent = state.parentPick;
   const kid = currentKidKey();
   const picks = new Set(state.picks[kid]);
   if (picks.has(itemId)) {
@@ -296,6 +297,13 @@ function togglePick(itemId) {
   }
   saveState();
   render();
+  recordSharedChange({ week: activeWeekId, kind: "pick", child: kid, mealId: itemId, value: picks.has(itemId) });
+  if (state.parentPick !== previousParent) recordSharedChange({ week: activeWeekId, kind: "parent", value: state.parentPick });
+}
+
+function recordSharedChange(change) {
+  if (window.recordLunchChange) window.recordLunchChange(change);
+  else (window.pendingLunchChanges ||= []).push(change);
 }
 
 function setParentPick(matchKey) {
@@ -304,6 +312,7 @@ function setParentPick(matchKey) {
   state.parentPick = normalizeParentPick(state.parentPick) === normalizedKey ? null : normalizedKey;
   saveState();
   render();
+  recordSharedChange({ week: activeWeekId, kind: "parent", value: state.parentPick });
 }
 
 function render() {
@@ -681,11 +690,14 @@ elements.copySummary.addEventListener("click", copySummary);
 elements.printPage.addEventListener("click", () => window.print());
 elements.resetWeek.addEventListener("click", () => {
   if (!window.confirm("Clear this week's names, picks, and parent choice?")) return;
+  const previousPicks = structuredClone(state.picks);
   if (speechSupported()) window.speechSynthesis.cancel();
   speakingMealId = null;
   state = structuredClone(defaultState);
   try { localStorage.removeItem(STORAGE_KEY); } catch {}
   render();
+  for (const child of CHILD_KEYS) for (const mealId of previousPicks[child]) recordSharedChange({ week: activeWeekId, kind: "pick", child, mealId, value: false });
+  recordSharedChange({ week: activeWeekId, kind: "parent", value: null });
 });
 
 window.addEventListener("pagehide", () => {
