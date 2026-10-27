@@ -2,6 +2,20 @@
 
 Static lunch picker for Luca and Noah.
 
+## One-meal reviews
+
+The selection screen shows one meal at a time with independent controls for both children. Each chooses no, or yes followed by 1–5 stars. Yes without a star remains visibly unfinished; the app does not invent a rating. Previous/next controls and per-week progress let the family return later. Details, nutrition, allergens, source menus and voice reading remain available.
+
+Within a week, the same normalized main-course title and set is shown once. All actual serving dates remain attached to it, and a deliberate review applies to each occurrence. Side-dish differences remain visible in the expanded details. Existing date-specific favorites stay unchanged until the user rates the grouped meal; differing old choices are flagged instead of being silently merged.
+
+Existing favorites and parent-confirmed arrangements are preserved under the original weekly keys and meal IDs. A verbatim snapshot is saved under `aisg-lunch-before-reviews-v5` before the first state write. Old favorites are shown as yes with stars pending. Explicit reviews live in `reviews.kid1` / `reviews.kid2` as `{ want: boolean, stars: null | 1..5 }`, while the original `picks` lists remain available for compatibility. The position in the review flow is local to each device and week.
+
+Reviews use the same encrypted per-child/per-meal sync field as previous favorites, with optional `reviewed` and `stars` values. No backend or family-code change is needed. A first-time device import fills missing fields and lets deliberate local reviews upgrade legacy cloud likes without a rating, while protecting existing cloud reviews and rejections from stale imports. Old app versions can still read yes/no; all family devices should reload to use and edit star reviews.
+
+Results keep all same-date combinations and show each child's rating. Combinations within a date sort by combined stars descending; unstarred old favorites remain labelled as pending. No weekly arrangement is chosen automatically. A changed review does not erase an existing final arrangement; the result asks the parent to recheck it, choose another pair, or explicitly clear it. These are household arrangements, not submitted Aden Food orders.
+
+`node tests/reviews.cjs` checks the old service-worker upgrade, preservation of all five weeks, repeated-course serving dates, yes/no/star controls, ranking, real encrypted sync using a synthetic family, concurrent edits, offline replay, clearing, export and phone/iPad layout. `node tests/reviews.cjs --live` checks the published app. The browser test currently uses the workstation's bundled Playwright and installed Edge. It never uses a real family code.
+
 ## Family-code synchronization
 
 Open Family sync settings on the iPad that already has saved choices and create a family. Existing weekly keys and meal IDs stay unchanged; the app first saves a verbatim pre-sync snapshot, then uploads encrypted per-item changes. Enter the same family code on another device, or open the copied connection link and confirm joining. Local liked meals merge; an imported final choice only fills an empty cloud choice. Later user changes synchronize every few seconds while the app is visible, with a durable local outbox for offline edits and idempotent retries. One parent-confirmed pair per week remains the final ordering rule.
@@ -12,7 +26,7 @@ The service source and schema are maintained separately in the task's `output/lu
 
 ## Weekly Results
 
-Children can mark multiple meals they like. Results include every combination in which Luca and Noah each have one liked meal on the same calendar date, whether the meals are identical or different. Options are grouped by date and always display both children and one portion each. The parent confirms at most one pair per week; choosing another pair replaces that week's final decision without changing either child's liked meals. No pair is selected automatically. Copy result includes only the confirmed weekly pair.
+Children can rate multiple meals they like. Results include every combination in which Luca and Noah each want one meal on the same calendar date, whether the meals are identical or different. Options are grouped by date and always display both children, their ratings, and one portion each. The parent confirms at most one pair per week; choosing another pair replaces that week's final decision without changing either child's reviews. No pair is selected automatically. Copy result includes only the confirmed weekly pair and its ratings.
 
 This results update keeps all existing meal IDs, weekly storage keys, picks and compatible parent choices. On first load, a verbatim snapshot of existing weekly state is saved under `aisg-lunch-backup-weekly-results-v3` before any state writes. Rendering results does not remove saved choices.
 
@@ -64,8 +78,7 @@ This app is static, so it can be hosted on GitHub Pages, Netlify, Cloudflare Pag
 For your current workflow, static hosting is enough:
 
 - Your wife opens one URL on her phone or tablet.
-- Luca chooses on the Luca tab.
-- Noah chooses on the Noah tab.
-- The Results tab shows orderable matches for the parent decision. A match can be the exact same set, or different sets that are available on the same day.
+- The family reviews each meal on the selection tab, with separate yes/no and star controls for Luca and Noah.
+- The Results tab shows same-day combinations and each child's ratings for the parent decision. A match can be the exact same set, or different sets available on the same day.
 
 Choices are stored in the local browser and, after explicitly creating or joining a family, synchronized through the encrypted family service. Different devices must join the same family code. A new device without that code cannot read the family records.

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hant">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#17464c">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="styles.css?v=menu-202611-family-sync-v4">
+    <link rel="stylesheet" href="styles.css?v=menu-202611-reviews-v5">
   </head>
   <body>
     <div class="app-shell">
@@ -16,20 +16,20 @@
           <p class="eyebrow" id="weekLabel">Er Sha · November 2026</p>
           <h1>AISG Lunch Picker</h1>
         </div>
+        <details class="app-tools" id="appTools">
+          <summary>更多與同步</summary>
+          <div class="tools-popover">
         <div class="toolbar" aria-label="App actions">
-          <button class="ghost-button" id="copySummary" type="button">Copy result</button>
+          <button class="ghost-button" id="copySummary" type="button">複製安排</button>
           <button class="ghost-button" id="exportChoices" type="button">匯出記錄</button>
-          <button class="ghost-button" id="printPage" type="button">Print</button>
-          <button class="danger-button" id="resetWeek" type="button">Reset</button>
+          <button class="ghost-button" id="printPage" type="button">列印</button>
+          <button class="danger-button" id="resetWeek" type="button">重設本週</button>
         </div>
-      </header>
-
-      <main>
         <section class="sync-band" aria-label="Family synchronization">
           <p id="syncStatus" role="status">只儲存在這部裝置，尚未啟用同步。</p>
           <details id="familySyncPanel" class="sync-panel">
             <summary>家庭同步設定</summary>
-            <p>在有記錄的 iPad 建立家庭，再於其他裝置輸入同一家庭碼。首次連接會備份並合併本機喜好；如最終安排不同，先保留已同步的安排，你仍可改選。</p>
+            <p>在有記錄的 iPad 建立家庭，再於其他裝置輸入同一家庭碼。首次連接會備份並合併本機記錄；已有的家庭評價和確認安排優先保留。本機新評價可補上舊喜好缺少的星數，之後仍可隨時修改。</p>
             <div id="syncConnect">
               <button class="ghost-button" id="syncCreate" type="button">建立家庭並同步本機記錄</button>
               <form id="syncJoinForm" class="sync-join-form">
@@ -52,41 +52,46 @@
             <p id="syncMessage" role="status"></p>
           </details>
         </section>
+          </div>
+        </details>
+      </header>
+
+      <main>
         <section class="control-band" aria-label="Chooser controls">
-          <label class="week-control" for="weekSelect">Menu week · 菜单周<select id="weekSelect" aria-label="Menu week"></select></label>
+          <label class="week-control" for="weekSelect">菜單週<select id="weekSelect" aria-label="Menu week"></select></label>
           <div class="segmented" role="tablist" aria-label="Current view">
-            <button class="segment active" type="button" data-view="kid1" role="tab" aria-selected="true">Child 1</button>
-            <button class="segment" type="button" data-view="kid2" role="tab" aria-selected="false">Child 2</button>
-            <button class="segment" type="button" data-view="results" role="tab" aria-selected="false">Results</button>
+            <button class="segment active" type="button" data-view="review" role="tab" aria-selected="true">逐餐評價</button>
+            <button class="segment" type="button" data-view="results" role="tab" aria-selected="false">結果與安排</button>
           </div>
         </section>
 
         <section class="status-band" aria-live="polite">
           <div>
-            <p class="mode-label" id="modeLabel">Child 1 choices</p>
-            <h2 id="modeTitle">Select every lunch Child 1 would enjoy.</h2>
+            <p class="mode-label" id="modeLabel">逐餐評價</p>
+            <h2 id="modeTitle">兩人分別選「不要」或「要」，要的餐再評 1–5 星。</h2>
           </div>
           <div class="score-strip" id="scoreStrip"></div>
         </section>
 
-        <p class="image-caption">AI food images · 食物图片为 AI 示意</p>
         <section class="menu-layout" id="menuLayout" aria-label="Lunch choices"></section>
 
         <section class="results-layout hidden" id="resultsLayout" aria-label="Shared lunch choices">
           <div class="results-main">
             <div class="section-heading">
-              <p class="mode-label">Weekly options · 本周备选</p>
-              <h2 id="matchCount">本周备选组合</h2>
-              <p class="weekly-rule">两人在同一天各有喜欢的餐即可备选，套餐可以相同或不同。每周只确认一组，决定权在你。</p>
+              <p class="mode-label">本週備選</p>
+              <h2 id="matchCount">本週備選組合</h2>
+              <p class="weekly-rule">同一天兩人都有「要」的餐即可備選，套餐可以相同或不同。各日期內按兩人合計星數排序，未評星的喜好仍保留。每週只確認一組，每人 1 份，由你決定。</p>
+              <p class="source-note">此為家庭選餐安排，尚未向 Aden Food 下單。</p>
             </div>
             <div class="results-grid" id="matchGrid"></div>
           </div>
           <aside class="decision-panel">
-            <p class="mode-label">本周最终安排 · 每人 1 份</p>
-            <h2 id="parentPickTitle">本周尚未确认</h2>
-            <p id="parentPickMeta">从同日备选中选择一组。</p>
+            <p class="mode-label">本週最終安排 · 每人 1 份</p>
+            <h2 id="parentPickTitle">本週尚未確認</h2>
+            <p id="parentPickMeta">從同日備選中選擇一組。</p>
+            <button class="ghost-button" id="clearParentPick" type="button" hidden>清除本週安排</button>
             <div class="divider"></div>
-            <p class="mode-label">未配对的喜欢套餐（保留）</p>
+            <p class="mode-label">未配對的喜歡套餐（保留）</p>
             <div class="solo-list" id="soloList"></div>
           </aside>
         </section>
@@ -99,39 +104,12 @@
       </main>
     </div>
 
-    <template id="mealCardTemplate">
-      <article class="meal-card">
-        <button class="image-button" type="button">
-          <img alt="">
-          <span class="selected-mark" aria-hidden="true">Picked</span>
-        </button>
-        <div class="meal-body">
-          <div class="meal-meta">
-            <span class="day-pill"></span>
-            <span class="set-pill"></span>
-            <button class="voice-button" type="button" title="Read English and Putonghua">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 9v6h4l5 4V5L8 9H4Z"></path>
-                <path d="M16.5 8.5a5 5 0 0 1 0 7"></path>
-                <path d="M18.8 6.2a8.3 8.3 0 0 1 0 11.6"></path>
-              </svg>
-            </button>
-          </div>
-          <h3></h3>
-          <p class="chinese-title"></p>
-          <ul class="item-list"></ul>
-          <div class="nutrition"></div>
-          <div class="allergy"></div>
-        </div>
-      </article>
-    </template>
-
-    <script src="menu-data.js?v=menu-202611-family-sync-v4"></script>
-    <script src="app.js?v=menu-202611-family-sync-v4"></script>
-    <script src="sync-config.js?v=menu-202611-family-sync-v4"></script>
-    <script src="sync-crypto.js?v=menu-202611-family-sync-v4"></script>
-    <script src="sync-client.js?v=menu-202611-family-sync-v4"></script>
-    <script src="sync-ui.js?v=menu-202611-family-sync-v4"></script>
+    <script src="menu-data.js?v=menu-202611-reviews-v5"></script>
+    <script src="app.js?v=menu-202611-reviews-v5"></script>
+    <script src="sync-config.js?v=menu-202611-reviews-v5"></script>
+    <script src="sync-crypto.js?v=menu-202611-reviews-v5"></script>
+    <script src="sync-client.js?v=menu-202611-reviews-v5"></script>
+    <script src="sync-ui.js?v=menu-202611-reviews-v5"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {

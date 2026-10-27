@@ -1,11 +1,11 @@
-importScripts('./menu-data.js?v=menu-202611-family-sync-v4');
-const CACHE_NAME = 'aisg-lunch-picker-menu-202611-family-sync-v4';
+importScripts('./menu-data.js?v=menu-202611-reviews-v5');
+const CACHE_NAME = 'aisg-lunch-picker-menu-202611-reviews-v5';
 const APP_ASSETS = [
-  './', './index.html', './styles.css?v=menu-202611-family-sync-v4',
-  './app.js?v=menu-202611-family-sync-v4', './menu-data.js?v=menu-202611-family-sync-v4',
+  './', './index.html', './styles.css?v=menu-202611-reviews-v5',
+  './app.js?v=menu-202611-reviews-v5', './menu-data.js?v=menu-202611-reviews-v5',
   './manifest.webmanifest', './icons/icon-180.png', './icons/icon-192.png',
-  './sync-config.js?v=menu-202611-family-sync-v4', './sync-crypto.js?v=menu-202611-family-sync-v4',
-  './sync-client.js?v=menu-202611-family-sync-v4', './sync-ui.js?v=menu-202611-family-sync-v4',
+  './sync-config.js?v=menu-202611-reviews-v5', './sync-crypto.js?v=menu-202611-reviews-v5',
+  './sync-client.js?v=menu-202611-reviews-v5', './sync-ui.js?v=menu-202611-reviews-v5',
   './icons/icon-512.png', './icons/icon-maskable-512.png',
   ...MENU_WEEKS.map((week) => './' + week.source),
   ...ALL_MENU_ITEMS.map((item) => './' + item.image)

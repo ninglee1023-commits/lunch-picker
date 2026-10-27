@@ -21,12 +21,23 @@
       const key='aisg-lunch-before-family-sync-v4';
       if(!localStorage.getItem(key))write(key,{savedAt:new Date().toISOString(),values:options.snapshot()});
     }
-    function importLocal() {
+    async function importLocal(snapshot) {
       const marker='aisg-lunch-sync-imported-v1:'+code;
       if(localStorage.getItem(marker))return;
       backup();
+      if(!snapshot?.entries)snapshot=await request('/api/family');
+      const existing=new Map();
+      const field=change=>change.week+'|'+(change.kind==='pick'?`pick:${change.child}:${change.mealId}`:'parent');
+      for(const entry of snapshot.entries){const change=await keys.decrypt(entry);existing.set(field(change),change)}
       const changes=options.importChanges();
-      for(const change of changes)queue.push({id:crypto.randomUUID(),change,mode:change.kind==='parent'?'if-empty':'set'});
+      // A joining device may still hold legacy favorites without star reviews.
+      // Fill missing fields, but never let that stale import replace a synced rating or rejection.
+      // A deliberate local review can upgrade a legacy cloud favorite that has no review yet.
+      for(const change of changes){
+        const previous=existing.get(field(change));
+        const upgrade=change.kind==='pick'&&change.reviewed===true&&previous&&previous.reviewed===undefined&&previous.value===true;
+        queue.push({id:crypto.randomUUID(),change,mode:upgrade?'set':'if-empty'});
+      }
       persist();localStorage.setItem(marker,'1');imported=true;
     }
     async function request(path,method='GET',body) {
@@ -76,15 +87,15 @@
       const previous={code,keys,queue};code=nextCode;keys=nextKeys;queue=read(queueKey(code),[]);busy=true;
       try{
         backup();
-        await request('/api/family',makeNew?'POST':'GET');
+        const snapshot=await request('/api/family',makeNew?'POST':'GET');
         write(CONFIG_KEY,{code,joinedAt:new Date().toISOString()});
-        importLocal();stopped=false;status('已連接家庭，正在合併本機記錄…');
+        await importLocal(snapshot);stopped=false;status('已連接家庭，正在合併本機記錄…');
       }catch(error){({code,keys,queue}=previous);status(code?'已保留原有同步連接。':'尚未啟用同步；本機選擇保留。');throw error}
       finally{busy=false}
       await sync();
     }
     async function init() {
-      if(code){try{keys=await LunchSyncCrypto.open(code);importLocal();void sync()}catch(error){status('同步未能啟動：'+error.message)}}
+      if(code){try{keys=await LunchSyncCrypto.open(code);await importLocal();void sync()}catch(error){status('同步未能啟動：'+error.message)}}
       else status('只儲存在這部裝置，尚未啟用同步。');
     }
     function disconnect(){generation++;stopped=true;code=null;keys=null;queue=[];localStorage.removeItem(CONFIG_KEY);status('已中斷同步；本機選擇保留。')}

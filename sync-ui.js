@@ -7,8 +7,10 @@
     MENU_WEEKS.forEach(week=>{
       let saved;try{saved=JSON.parse(localStorage.getItem(key(week.id)))}catch{}
       if(!saved)return;
-      for(const child of ['kid1','kid2'])for(const mealId of new Set(saved.picks?.[child]||[])){
-        if(ALL_MENU_ITEMS.some(item=>item.id===mealId&&week.days.some(day=>day.date===item.date)))changes.push({week:week.id,kind:'pick',child,mealId,value:true});
+      for(const child of ['kid1','kid2'])for(const mealId of new Set([...(saved.picks?.[child]||[]),...Object.keys(saved.reviews?.[child]||{})])){
+        if(!ALL_MENU_ITEMS.some(item=>item.id===mealId&&week.days.some(day=>day.date===item.date)))continue;
+        const review=validReviews(saved.reviews?.[child])[mealId];
+        changes.push(review?{week:week.id,kind:'pick',child,mealId,value:review.want,reviewed:true,stars:review.stars}:{week:week.id,kind:'pick',child,mealId,value:true});
       }
       if(saved.parentPick)changes.push({week:week.id,kind:'parent',value:saved.parentPick});
     });return changes;
@@ -18,14 +20,18 @@
     for(const change of changes){
       const week=MENU_WEEKS.find(week=>week.id===change.week);if(!week)continue;
       let saved=updates.get(week.id);
-      if(!saved){try{saved=JSON.parse(localStorage.getItem(key(week.id)))}catch{};saved={...structuredClone(defaultState),...saved,picks:{kid1:[...(saved?.picks?.kid1||[])],kid2:[...(saved?.picks?.kid2||[])]}};updates.set(week.id,saved)}
+      if(!saved){try{saved=JSON.parse(localStorage.getItem(key(week.id)))}catch{};saved={...structuredClone(defaultState),...saved,picks:{kid1:[...(saved?.picks?.kid1||[])],kid2:[...(saved?.picks?.kid2||[])]},reviews:{kid1:validReviews(saved?.reviews?.kid1),kid2:validReviews(saved?.reviews?.kid2)}};updates.set(week.id,saved)}
       if(change.kind==='pick'&&['kid1','kid2'].includes(change.child)&&typeof change.value==='boolean'&&ALL_MENU_ITEMS.some(item=>item.id===change.mealId&&week.days.some(day=>day.date===item.date))){
         const picks=new Set(saved.picks[change.child]);if(change.value)picks.add(change.mealId);else picks.delete(change.mealId);saved.picks[change.child]=[...picks];
+        if(change.reviewed===true&&(change.stars===null||Number.isInteger(change.stars)&&change.stars>=1&&change.stars<=5)){
+          saved.reviews[change.child][change.mealId]={want:change.value,stars:change.value?change.stars:null};
+        }else{delete saved.reviews[change.child][change.mealId]}
       }else if(change.kind==='parent'&&(change.value===null||typeof change.value==='string'&&change.value.length<200)){saved.parentPick=change.value}
     }
-    for(const [week,saved]of updates)localStorage.setItem(key(week),JSON.stringify(saved));
+    let changed=false;
+    for(const [week,saved]of updates){const serialized=JSON.stringify(saved);if(localStorage.getItem(key(week))!==serialized){localStorage.setItem(key(week),serialized);if(week===activeWeekId)changed=true}}
     // Keep the local view and speaking state while refreshing only the selected records.
-    const view=state.view;state=loadState();state.view=view;render();
+    if(changed){const view=state.view;state=loadState();state.view=view;render()}
   }
   const controller=LunchFamilySync.create({endpoint:window.LUNCH_SYNC_ENDPOINT,weeks:MENU_WEEKS,snapshot,importChanges,apply,onStatus(message,info){
     byId('syncStatus').textContent=message;

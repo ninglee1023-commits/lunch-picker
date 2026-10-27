@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "test:reviews": "node tests/reviews.cjs",
     "check": "node --check menu-data.js && node --check app.js && node --check sync-config.js && node --check sync-crypto.js && node --check sync-client.js && node --check sync-ui.js && node --check serve.mjs && node --check sw.js"
   },
   "devDependencies": {}
