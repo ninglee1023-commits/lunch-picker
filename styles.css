@@ -752,12 +752,8 @@ h3 {
 .sync-panel summary { cursor: pointer; font-weight: 700; color: var(--accent-strong); }
 .sync-panel p { line-height: 1.6; max-width: 850px; }
 .sync-panel [hidden] { display: none !important; }
-.sync-join-form { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 16px; }
-.sync-join-form input { min-width: 0; width: min(390px,100%); border: 1px solid var(--line); border-radius: 8px; padding: 10px; font: 16px "Segoe UI",sans-serif; }
 .sync-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-#familyCode { font: 700 1rem ui-monospace,monospace; overflow-wrap: anywhere; color: var(--accent-strong); }
 #syncMessage { color: #8a4c2d; }
-@media (max-width:600px) { .sync-join-form { display: grid; } }
 @media print { .sync-band { display:none; } }
 
 /* One meal at a time, with independent reviews for both children. */

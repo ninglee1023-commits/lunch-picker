@@ -8,7 +8,7 @@
     const queueKey=value=>'aisg-lunch-sync-queue-v1:'+value;
     let queue=code?read(queueKey(code),[]):[];
     let timer=null;
-    const status=message=>{options.onStatus(message,{connected:!!code,pending:queue.length,code:code?LunchSyncCrypto.displayCode(code):'',lastSync})};
+    const status=message=>{options.onStatus(message,{connected:!!code,pending:queue.length,lastSync})};
     function persist(){if(code)write(queueKey(code),queue)}
     function record(change,mode='set') {
       if(!code)return;
@@ -44,7 +44,7 @@
       const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),12000);
       try{
         const response=await fetch(options.endpoint+path,{method,cache:'no-store',headers:{Authorization:'Bearer '+keys.token,...(body?{'Content-Type':'application/json'}:{})},body:body?JSON.stringify(body):undefined,signal:controller.signal});
-        if(!response.ok){const error=new Error(response.status===404?'找不到這個家庭碼，請檢查後再試。':response.status===429?'同步服務忙碌，稍後會重試。':'同步暫時未能完成，改動仍保存在本機。');error.status=response.status;throw error}
+        if(!response.ok){const error=new Error(response.status===404?'家庭連結無效，請從已連接的裝置重新複製。':response.status===429?'同步服務忙碌，稍後再試。':'同步暫時未能完成，改動仍保存在本機。');error.status=response.status;throw error}
         return response.json();
       }finally{clearTimeout(timeout)}
     }
@@ -83,14 +83,20 @@
     }
     async function connect(input,makeNew=false) {
       if(busy)throw new Error('正在同步，請稍後再試。');
-      const nextCode=LunchSyncCrypto.normalizeCode(input),nextKeys=await LunchSyncCrypto.open(nextCode);
-      const previous={code,keys,queue};code=nextCode;keys=nextKeys;queue=read(queueKey(code),[]);busy=true;
+      const nextCode=LunchSyncCrypto.normalizeCode(input);
+      if(code&&code!==nextCode)throw new Error('這部裝置已連接另一個家庭。');
+      if(code===nextCode)return sync();
+      const previous={code,keys,queue,imported};
+      busy=true;
       try{
+        const nextKeys=await LunchSyncCrypto.open(nextCode);
+        code=nextCode;keys=nextKeys;queue=read(queueKey(code),[]);
         backup();
         const snapshot=await request('/api/family',makeNew?'POST':'GET');
+        await importLocal(snapshot);
         write(CONFIG_KEY,{code,joinedAt:new Date().toISOString()});
-        await importLocal(snapshot);stopped=false;status('已連接家庭，正在合併本機記錄…');
-      }catch(error){({code,keys,queue}=previous);status(code?'已保留原有同步連接。':'尚未啟用同步；本機選擇保留。');throw error}
+        stopped=false;status('已連接家庭，正在讀取記錄…');
+      }catch(error){({code,keys,queue,imported}=previous);status('只儲存在這部裝置，尚未啟用同步。');throw error}
       finally{busy=false}
       await sync();
     }
@@ -103,7 +109,7 @@
     window.addEventListener('online',()=>void sync());
     document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')void sync()});
     window.addEventListener('pagehide',()=>clearTimeout(timer));
-    return {init,record,sync,connect,disconnect,getCode:()=>code?LunchSyncCrypto.displayCode(code):'',close:()=>{clearInterval(poll);clearTimeout(timer);stopped=true}};
+    return {init,record,sync,connect,disconnect,getInviteKey:()=>code,close:()=>{clearInterval(poll);clearTimeout(timer);stopped=true}};
   }
   root.LunchFamilySync={create};
 })(globalThis);

@@ -7,7 +7,7 @@
   const unbase64=text=>Uint8Array.from(atob(text.replaceAll('-','+').replaceAll('_','/')),c=>c.charCodeAt(0));
   function normalizeCode(code) {
     const value=String(code||'').toUpperCase().replace(/[\s-]/g,'');
-    if(value.length!==24||Array.from(value).some(c=>!alphabet.includes(c)))throw new Error('請輸入完整的 24 字元家庭碼。');
+    if(value.length!==24||Array.from(value).some(c=>!alphabet.includes(c)))throw new Error('家庭連結無效，請從已連接的裝置重新複製。');
     return value;
   }
   function createCode(){return Array.from(crypto.getRandomValues(new Uint8Array(24)),b=>alphabet[b&31]).join('');}

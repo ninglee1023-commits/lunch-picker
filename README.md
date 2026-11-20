@@ -16,11 +16,13 @@ Results keep all same-date combinations and show each child's rating. Combinatio
 
 `node tests/reviews.cjs` checks the old service-worker upgrade, preservation of all five weeks, repeated-course serving dates, yes/no/star controls, ranking, real encrypted sync using a synthetic family, concurrent edits, offline replay, clearing, export and phone/iPad layout. `node tests/reviews.cjs --live` checks the published app. The browser test currently uses the workstation's bundled Playwright and installed Edge. It never uses a real family code.
 
-## Family-code synchronization
+## Automatic family synchronization
 
-Open Family sync settings on the iPad that already has saved choices and create a family. Existing weekly keys and meal IDs stay unchanged; the app first saves a verbatim pre-sync snapshot, then uploads encrypted per-item changes. Enter the same family code on another device, or open the copied connection link and confirm joining. Local liked meals merge; an imported final choice only fills an empty cloud choice. Later user changes synchronize every few seconds while the app is visible, with a durable local outbox for offline edits and idempotent retries. One parent-confirmed pair per week remains the final ordering rule.
+Already connected devices resume sync as soon as the app opens. To add a device, open “更多與同步 → 家庭同步設定” on a connected device, copy “複製家庭專用連結”, then open that link once on the new device. The app connects automatically and remembers the connection. A device with existing local choices asks whether to merge those choices. A device already connected to a different family keeps that connection. Use “首次啟用家庭同步” only when setting up the first device of a new family.
 
-The 24-character family code is generated locally with Web Crypto. HKDF-derived AES-GCM encrypts the week, child, meal and choice before upload; HMAC indexes and a distinct bearer capability authorize the encrypted API. The service cannot read the choices or the family code. Keep the code within the family; it is required for another device to decrypt records. `sync-config.js` contains only the public service URL. Never put family codes, administrative credentials, or encryption keys in source.
+Existing weekly keys, meal IDs, and family connections retain their format. The app backs up local records before the first merge. A local final choice imports only if the family record has no final choice for that week. Reviews and confirmed arrangements sync every few seconds while the app is visible, with a durable outbox for offline updates.
+
+The link's client-only URL fragment carries the existing encryption and access secret. The app removes the fragment after reading it, and the server receives encrypted records and a distinct authorization token. Share the link only with family members. `sync-config.js` contains only the public service URL. Never put access secrets, administrative credentials, or encryption keys in source.
 
 The service source and schema are maintained separately in the task's `output/lunch-sync-service` checkout. The frontend's pre-sync backup is `aisg-lunch-before-family-sync-v4`. Export choices downloads weekly records only, excluding sync codes and credentials. Disconnect keeps local choices. Storage remains local-only until a family is created or joined.
 
@@ -82,4 +84,4 @@ For your current workflow, static hosting is enough:
 - The family reviews each meal on the selection tab, with separate yes/no and star controls for Luca and Noah.
 - The Results tab shows same-day combinations and each child's ratings for the parent decision. A match can be the exact same set, or different sets available on the same day.
 
-Choices are stored in the local browser and, after explicitly creating or joining a family, synchronized through the encrypted family service. Different devices must join the same family code. A new device without that code cannot read the family records.
+Choices are stored in the local browser. After connection through the private family link, reviews and results also synchronize through the encrypted family service. The public URL can be used to browse the menu on a new device without connecting it to any family.

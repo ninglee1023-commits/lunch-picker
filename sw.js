@@ -1,11 +1,11 @@
-importScripts('./menu-data.js?v=menu-20261207-v6');
-const CACHE_NAME = 'aisg-lunch-picker-menu-20261207-v6';
+importScripts('./menu-data.js?v=family-link-v7');
+const CACHE_NAME = 'aisg-lunch-picker-family-link-v7';
 const APP_ASSETS = [
-  './', './index.html', './styles.css?v=menu-20261207-v6',
-  './app.js?v=menu-20261207-v6', './menu-data.js?v=menu-20261207-v6',
+  './', './index.html', './styles.css?v=family-link-v7',
+  './app.js?v=family-link-v7', './menu-data.js?v=family-link-v7',
   './manifest.webmanifest', './icons/icon-180.png', './icons/icon-192.png',
-  './sync-config.js?v=menu-20261207-v6', './sync-crypto.js?v=menu-20261207-v6',
-  './sync-client.js?v=menu-20261207-v6', './sync-ui.js?v=menu-20261207-v6',
+  './sync-config.js?v=family-link-v7', './sync-crypto.js?v=family-link-v7',
+  './sync-client.js?v=family-link-v7', './sync-ui.js?v=family-link-v7',
   './icons/icon-512.png', './icons/icon-maskable-512.png',
   ...MENU_WEEKS.map((week) => './' + week.source),
   ...ALL_MENU_ITEMS.map((item) => './' + item.image)

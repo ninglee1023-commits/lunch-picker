@@ -79,9 +79,37 @@ async function saved(page) { return page.evaluate(k => JSON.parse(localStorage.g
     await a.locator('#kid2-star-3').click();
     await a.locator('#kid2-no').click();
     await a.locator('#appTools > summary').click(); await a.locator('#familySyncPanel > summary').click(); await a.locator('#syncCreate').click(); await settle(a);
-    const code = await a.evaluate(() => familySync.getCode());
+    await a.evaluate(() => { navigator.clipboard.writeText = async value => { window.copiedInvite = value; }; });
+    await a.locator('#syncCopyLink').click();
+    await a.waitForFunction(() => !!window.copiedInvite);
+    const invite = await a.evaluate(() => window.copiedInvite);
+    const code = new URLSearchParams(new URL(invite).hash.slice(1)).get('family');
+    assert.equal(code.length, 24);
+    assert.equal(new URL(invite).search, '');
+    assert.equal(await a.locator('#syncCodeInput, #familyCode').count(), 0, 'Sync codes are still exposed in the UI');
+
+    const freshContext = await browser.newContext();
+    const fresh = await freshContext.newPage();
+    fresh.on('pageerror', error => errors.push(error.message));
+    await fresh.goto(base);
+    assert.equal(await saved(fresh), null, 'The public URL retrieved a family record');
+    await fresh.goto(invite);
+    await fresh.waitForFunction(() => document.getElementById('syncStatus').textContent.startsWith('已同步'));
+    assert.equal(new URL(fresh.url()).hash, '', 'The family link remained in the address bar');
+    assert.equal((await saved(fresh)).parentPick, 'exact:western-20261110', 'Automatic join did not retrieve the existing result');
+    await fresh.goto(base);
+    await fresh.waitForFunction(() => document.getElementById('syncStatus').textContent.startsWith('已同步'));
+    assert.equal((await saved(fresh)).reviews.kid1['asian-20261109'].stars, 5);
+    await fresh.evaluate(() => { location.hash = 'family=' + LunchSyncCrypto.createCode(); });
+    await fresh.waitForFunction(() => document.getElementById('syncMessage').textContent.includes('原家庭同步'));
+    assert.equal(await fresh.evaluate(() => familySync.getInviteKey()), code, 'Opening another invite switched families');
+    await freshContext.close();
+
     await seed(b, { [key(week)]: JSON.stringify({...oldState({kid1:['asian-20261109'],kid2:['asian-20261109','western-20261110']}),reviews:{kid1:{},kid2:{'western-20261110':{want:true,stars:3}}}}) });
-    await b.locator('#appTools > summary').click(); await b.locator('#familySyncPanel > summary').click(); await b.locator('#syncCodeInput').fill(code); await b.locator('#syncJoin').click(); await settle(b); await settle(a);
+    await b.goto(invite);
+    await b.getByRole('button', { name: '合併本機記錄並同步' }).waitFor();
+    assert.equal(await b.evaluate(() => familySync.getInviteKey()), null, 'Local records were linked before merge confirmation');
+    await b.locator('#syncJoin').click(); await settle(b); await settle(a);
     assert.deepEqual((await saved(b)).reviews, (await saved(a)).reviews, 'Stars or explicit no did not sync on first join');
     assert.equal((await saved(b)).reviews.kid1['asian-20261109'].stars,5,'A joining device with an old favorite overwrote cloud stars');
     assert.equal((await saved(b)).reviews.kid2['asian-20261109'].want,false,'Old favorite overwrote an explicit cloud rejection');
@@ -105,6 +133,7 @@ async function saved(page) { return page.evaluate(k => JSON.parse(localStorage.g
     await a.locator('[data-match-key="exact:asian-20261109"] button').click();
     assert.equal((await saved(a)).parentPick, 'exact:asian-20261109');
     await settle(a); await settle(b);
+    assert.equal((await saved(b)).parentPick, 'exact:asian-20261109', 'The connected device did not receive the updated final arrangement');
 
     // Rank all combinations within the real calendar date; no automatic confirmation.
     await show(a, 'western-20261109');
@@ -118,7 +147,7 @@ async function saved(page) { return page.evaluate(k => JSON.parse(localStorage.g
     await settle(a); await settle(b);
 
     // Offline star changes survive reload and merge with a different child's live change.
-    await show(a, 'asian-20261109'); await a.waitForFunction(async () => (await caches.keys()).includes('aisg-lunch-picker-menu-20261207-v6'));
+    await show(a, 'asian-20261109'); await a.waitForFunction(async () => (await caches.keys()).includes('aisg-lunch-picker-family-link-v7'));
     await aContext.setOffline(true); await a.locator('#kid1-star-2').click(); await a.reload();
     assert.equal((await saved(a)).reviews.kid1['asian-20261109'].stars, 2);
     await show(b, 'asian-20261109'); await b.locator('#kid2-star-4').click(); await settle(b);
@@ -168,6 +197,6 @@ async function saved(page) { return page.evaluate(k => JSON.parse(localStorage.g
     assert.equal(await dup.locator('.review-image').count(), 1);
     await dupContext.close();
     assert.deepEqual(errors, []);
-    console.log(`${live ? 'LIVE' : 'LOCAL'} PASS: old five-week records and final choice preserved; one meal/two people; yes/no/1-5 stars; repeats retain dates; score-ranked same-day pairs; real encrypted cloud sync; concurrent children; offline reload/replay; clearing; export without credentials; phone/iPad layouts.`);
+    console.log(`${live ? 'LIVE' : 'LOCAL'} PASS: public URL stays local; family link joins automatically and remembers the device; existing local records merge on request; previous records, encrypted sync, offline replay and mobile reviews work.`);
   } finally { if (browser) await browser.close(); if (!live) server.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
