@@ -1,11 +1,11 @@
-importScripts('./menu-data.js?v=menu-202611-reviews-v5');
-const CACHE_NAME = 'aisg-lunch-picker-menu-202611-reviews-v5';
+importScripts('./menu-data.js?v=menu-20261207-v6');
+const CACHE_NAME = 'aisg-lunch-picker-menu-20261207-v6';
 const APP_ASSETS = [
-  './', './index.html', './styles.css?v=menu-202611-reviews-v5',
-  './app.js?v=menu-202611-reviews-v5', './menu-data.js?v=menu-202611-reviews-v5',
+  './', './index.html', './styles.css?v=menu-20261207-v6',
+  './app.js?v=menu-20261207-v6', './menu-data.js?v=menu-20261207-v6',
   './manifest.webmanifest', './icons/icon-180.png', './icons/icon-192.png',
-  './sync-config.js?v=menu-202611-reviews-v5', './sync-crypto.js?v=menu-202611-reviews-v5',
-  './sync-client.js?v=menu-202611-reviews-v5', './sync-ui.js?v=menu-202611-reviews-v5',
+  './sync-config.js?v=menu-20261207-v6', './sync-crypto.js?v=menu-20261207-v6',
+  './sync-client.js?v=menu-20261207-v6', './sync-ui.js?v=menu-20261207-v6',
   './icons/icon-512.png', './icons/icon-maskable-512.png',
   ...MENU_WEEKS.map((week) => './' + week.source),
   ...ALL_MENU_ITEMS.map((item) => './' + item.image)

@@ -1,4 +1,4 @@
-/* Transcribed from the five supplied November 2026 menu images. Nutrition and allergens are as printed. */
+/* Transcribed from the supplied AISG Er Sha menu images. Nutrition and allergens are as printed. */
 const MENU_WEEKS = [
   {
     "id": "2026-11-02",
@@ -144,6 +144,19 @@ const MENU_WEEKS = [
       }
     ],
     "source": "assets/source/menu-20261130.jpg"
+  },
+  {
+    "id": "2026-12-07",
+    "label": "Dec 7–11, 2026",
+    "start": "2026-12-07",
+    "days": [
+      { "day": "Monday", "date": "2026/12/7", "status": "" },
+      { "day": "Tuesday", "date": "2026/12/8", "status": "" },
+      { "day": "Wednesday", "date": "2026/12/9", "status": "" },
+      { "day": "Thursday", "date": "2026/12/10", "status": "" },
+      { "day": "Friday", "date": "2026/12/11", "status": "" }
+    ],
+    "source": "assets/source/menu-20261207.jpg"
   }
 ];
 const ALL_MENU_ITEMS = [
@@ -1837,5 +1850,438 @@ const ALL_MENU_ITEMS = [
       "carb": "65.2g"
     },
     "source": "assets/source/menu-20261130.jpg"
+  },
+  {
+    "id": "asian-20261207",
+    "day": "Monday",
+    "date": "2026/12/7",
+    "set": "Asian",
+    "title": "Pork Dumplings",
+    "titleZh": "豬肉餃子",
+    "image": "assets/food/asian-20261207-realistic.webp",
+    "items": [
+      "Leaf Lettuce",
+      "Stir-Fried Noodles",
+      "Vegetable & Chicken Soup"
+    ],
+    "itemsZh": [
+      "油麥菜",
+      "豉油皇炒麵",
+      "霸王花雞湯"
+    ],
+    "allergens": [
+      "Gluten",
+      "Egg",
+      "Pork"
+    ],
+    "nutrition": {
+      "cal": "356 kcal",
+      "protein": "15.2g",
+      "fat": "2.7g",
+      "carb": "68.3g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "western-20261207",
+    "day": "Monday",
+    "date": "2026/12/7",
+    "set": "Western",
+    "title": "Chicken Stroganoff",
+    "titleZh": "俄式酸奶油蘑菇燉雞",
+    "image": "assets/food/western-20261207-realistic.webp",
+    "items": [
+      "Long Beans & Baby Corn",
+      "Butter Onion Rice",
+      "Sweet Potato and Tomato Soup"
+    ],
+    "itemsZh": [
+      "長豆角和玉米筍",
+      "黃油洋蔥米飯",
+      "甜薯番茄湯"
+    ],
+    "allergens": [
+      "Gluten",
+      "Dairy"
+    ],
+    "nutrition": {
+      "cal": "272 kcal",
+      "protein": "27.2g",
+      "fat": "7.7g",
+      "carb": "26.2g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "vegetarian-20261207",
+    "day": "Monday",
+    "date": "2026/12/7",
+    "set": "Vegetarian",
+    "title": "Braised Mushroom & Tofu, Udon Noodles, Vegetable Tempura",
+    "titleZh": "日式金針菇燜豆腐、烏冬麵、時蔬天婦羅",
+    "image": "assets/food/vegetarian-20261207-realistic.webp",
+    "items": [
+      "Braised Mushroom & Tofu",
+      "Udon Noodles",
+      "Vegetable Tempura"
+    ],
+    "itemsZh": [
+      "日式金針菇燜豆腐",
+      "烏冬麵",
+      "時蔬天婦羅"
+    ],
+    "allergens": [
+      "Gluten",
+      "Egg"
+    ],
+    "nutrition": {
+      "cal": "398 kcal",
+      "protein": "17.4g",
+      "fat": "6.1g",
+      "carb": "71.4g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "asian-20261208",
+    "day": "Tuesday",
+    "date": "2026/12/8",
+    "set": "Asian",
+    "title": "Stir-fried Chicken with Basil",
+    "titleZh": "九層塔三杯雞",
+    "image": "assets/food/asian-20261208-realistic.webp",
+    "items": [
+      "Choy Sum with Garlic",
+      "Steamed Rice",
+      "Corn & Carrot Pork Soup"
+    ],
+    "itemsZh": [
+      "蒜蓉菜心",
+      "米飯",
+      "玉米紅蘿蔔豬骨湯"
+    ],
+    "allergens": [
+      "Gluten"
+    ],
+    "nutrition": {
+      "cal": "256 kcal",
+      "protein": "25.9g",
+      "fat": "8.6g",
+      "carb": "26.5g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "western-20261208",
+    "day": "Tuesday",
+    "date": "2026/12/8",
+    "set": "Western",
+    "title": "Cheese Meatballs",
+    "titleZh": "芝士焗瑞典肉丸",
+    "image": "assets/food/western-20261208-realistic.webp",
+    "items": [
+      "Stewed Vegetables",
+      "Spaghetti with Tomato Basil Sauce",
+      "Minestrone Soup"
+    ],
+    "itemsZh": [
+      "燴雜菜",
+      "羅勒番茄意粉",
+      "意大利雜菜湯"
+    ],
+    "allergens": [
+      "Gluten",
+      "Dairy",
+      "Egg",
+      "Pork"
+    ],
+    "nutrition": {
+      "cal": "542 kcal",
+      "protein": "31.6g",
+      "fat": "24.6g",
+      "carb": "78.6g"
+    },
+    "source": "assets/source/menu-20261207.jpg",
+    "note": "脂肪數值採用原圖中文欄的 24.6 g，英文欄有排印異常。"
+  },
+  {
+    "id": "vegetarian-20261208",
+    "day": "Tuesday",
+    "date": "2026/12/8",
+    "set": "Vegetarian",
+    "title": "Fried Egg with Corn, Tortilla Cheese Roll, Carrot and Beans",
+    "titleZh": "玉米炒蛋、芝士薄餅卷、紅蘿蔔炒甜豆",
+    "image": "assets/food/vegetarian-20261208-realistic.webp",
+    "items": [
+      "Fried Egg with Corn",
+      "Tortilla Cheese Roll",
+      "Carrot and Beans"
+    ],
+    "itemsZh": [
+      "玉米炒蛋",
+      "芝士薄餅卷",
+      "紅蘿蔔炒甜豆"
+    ],
+    "allergens": [
+      "Gluten",
+      "Dairy",
+      "Egg"
+    ],
+    "nutrition": {
+      "cal": "621 kcal",
+      "protein": "35.7g",
+      "fat": "10.8g",
+      "carb": "45.3g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "asian-20261209",
+    "day": "Wednesday",
+    "date": "2026/12/9",
+    "set": "Asian",
+    "title": "Steamed Ground Pork with Yam, Scrambled Egg with Green Beans",
+    "titleZh": "山藥蒸肉餅、豆角炒蛋",
+    "image": "assets/food/asian-20261209-realistic.webp",
+    "items": [
+      "Lettuce",
+      "Steamed Rice",
+      "Arrowroot Pork Soup"
+    ],
+    "itemsZh": [
+      "清炒生菜",
+      "米飯",
+      "粉葛瘦肉湯"
+    ],
+    "allergens": [
+      "Gluten",
+      "Egg",
+      "Pork"
+    ],
+    "nutrition": {
+      "cal": "561 kcal",
+      "protein": "32.5g",
+      "fat": "39.2g",
+      "carb": "21.8g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "western-20261209",
+    "day": "Wednesday",
+    "date": "2026/12/9",
+    "set": "Western",
+    "title": "Chicken Nuggets",
+    "titleZh": "炸雞塊",
+    "image": "assets/food/western-20261209-realistic.webp",
+    "items": [
+      "Carrot and Beans",
+      "French Fries",
+      "Corn Cream Soup"
+    ],
+    "itemsZh": [
+      "紅蘿蔔豆角",
+      "薯條",
+      "玉米忌廉湯"
+    ],
+    "allergens": [
+      "Dairy"
+    ],
+    "nutrition": {
+      "cal": "288 kcal",
+      "protein": "26.4g",
+      "fat": "7.6g",
+      "carb": "30.5g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "vegetarian-20261209",
+    "day": "Wednesday",
+    "date": "2026/12/9",
+    "set": "Vegetarian",
+    "title": "Stewed Bean Curd & Mushrooms, Noodles with Bean Sauce, Vinegar Cucumber",
+    "titleZh": "菇菌燴豆乾、素拌醬麵、醋漬青瓜",
+    "image": "assets/food/vegetarian-20261209-realistic.webp",
+    "items": [
+      "Stewed Bean Curd & Mushrooms",
+      "Noodles with Bean Sauce",
+      "Cucumber in Vinegar"
+    ],
+    "itemsZh": [
+      "菇菌燴豆乾",
+      "素拌醬麵",
+      "醋漬青瓜"
+    ],
+    "allergens": [
+      "Gluten"
+    ],
+    "nutrition": {
+      "cal": "236 kcal",
+      "protein": "12.2g",
+      "fat": "6g",
+      "carb": "36.6g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "asian-20261210",
+    "day": "Thursday",
+    "date": "2026/12/10",
+    "set": "Asian",
+    "title": "Stir-fried Beef with Asparagus",
+    "titleZh": "蘆筍炒牛肉片",
+    "image": "assets/food/asian-20261210-realistic.webp",
+    "items": [
+      "Green Pak Choi",
+      "Steamed Rice",
+      "Lotus Root & Pork Soup"
+    ],
+    "itemsZh": [
+      "小白菜",
+      "米飯",
+      "蓮藕豬骨湯"
+    ],
+    "allergens": [
+      "Gluten"
+    ],
+    "nutrition": {
+      "cal": "299 kcal",
+      "protein": "23.7g",
+      "fat": "9.2g",
+      "carb": "31.3g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "western-20261210",
+    "day": "Thursday",
+    "date": "2026/12/10",
+    "set": "Western",
+    "title": "Ham & Cheese Sandwich",
+    "titleZh": "烤火腿芝士三文治",
+    "image": "assets/food/western-20261210-realistic.webp",
+    "items": [
+      "Baby Corn & Vegetables",
+      "Roasted Potatoes",
+      "Onion Soup"
+    ],
+    "itemsZh": [
+      "玉米筍和時蔬",
+      "迷迭香烤薯仔",
+      "洋蔥湯"
+    ],
+    "allergens": [
+      "Gluten",
+      "Egg",
+      "Dairy",
+      "Pork"
+    ],
+    "nutrition": {
+      "cal": "674 kcal",
+      "protein": "44.8g",
+      "fat": "27g",
+      "carb": "92.4g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "vegetarian-20261210",
+    "day": "Thursday",
+    "date": "2026/12/10",
+    "set": "Vegetarian",
+    "title": "Fusilli with Pesto, Long Beans and Bell Pepper, Frittata",
+    "titleZh": "羅勒青醬螺絲粉、彩椒豆角、西式烤蛋",
+    "image": "assets/food/vegetarian-20261210-realistic.webp",
+    "items": [
+      "Fusilli with Pesto Sauce",
+      "Long Beans and Bell Pepper",
+      "Frittata"
+    ],
+    "itemsZh": [
+      "羅勒青醬螺絲粉",
+      "彩椒豆角",
+      "西式烤蛋"
+    ],
+    "allergens": [
+      "Gluten",
+      "Egg"
+    ],
+    "nutrition": {
+      "cal": "324 kcal",
+      "protein": "27.5g",
+      "fat": "8.9g",
+      "carb": "74.9g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "festival-20261211",
+    "day": "Friday",
+    "date": "2026/12/11",
+    "set": "Festival",
+    "title": "Christmas Set: Roasted Chicken, BBQ Pork & Beef Sausage",
+    "titleZh": "聖誕套餐：烤雞、美式烤豬肉、牛肉香腸",
+    "image": "assets/food/festival-20261211-realistic.webp",
+    "items": [
+      "Roasted Chicken",
+      "BBQ Pork",
+      "Beef Sausage",
+      "Sautéed Vegetables with Bell Pepper",
+      "Corn",
+      "Pumpkin Soup"
+    ],
+    "itemsZh": [
+      "聖誕烤雞",
+      "美式烤豬肉",
+      "德式牛肉香腸",
+      "甜椒炒雜菜",
+      "玉米",
+      "南瓜濃湯"
+    ],
+    "allergens": [
+      "Gluten",
+      "Egg",
+      "Dairy",
+      "Pork"
+    ],
+    "nutrition": {
+      "cal": "445 kcal",
+      "protein": "14.9g",
+      "fat": "12.1g",
+      "carb": "68.6g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
+  },
+  {
+    "id": "vegetarian-20261211",
+    "day": "Friday",
+    "date": "2026/12/11",
+    "set": "Vegetarian",
+    "title": "Tomato Cheese Pizza, Hash Browns, Vegetables",
+    "titleZh": "番茄芝士薄餅、薯餅、時蔬",
+    "image": "assets/food/vegetarian-20261211-realistic.webp",
+    "items": [
+      "Tomato Cheese Pizza",
+      "Hash Browns",
+      "Vegetables"
+    ],
+    "itemsZh": [
+      "番茄芝士薄餅",
+      "薯餅",
+      "時蔬"
+    ],
+    "allergens": [
+      "Gluten",
+      "Dairy",
+      "Egg"
+    ],
+    "nutrition": {
+      "cal": "429 kcal",
+      "protein": "24.2g",
+      "fat": "12.6g",
+      "carb": "72.9g"
+    },
+    "source": "assets/source/menu-20261207.jpg"
   }
 ];

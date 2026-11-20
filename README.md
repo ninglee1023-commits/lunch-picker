@@ -46,12 +46,13 @@ http://127.0.0.1:8081/
 
 ## Menu Updates
 
-November 2026 includes five menu weeks, 56 selectable lunch sets, and the original source image for each week. Use the week selector to switch weeks. Luca, Noah, and parent choices are stored separately for each week. Earlier August choices remain in browser storage under their previous key.
+The menu includes five November 2026 menu weeks (56 lunch sets) and December 7–11, 2026 (14 lunch sets). Each week links to its original menu image. Use the week selector to switch weeks. Luca, Noah, and parent choices are stored separately for each week. Earlier August choices remain in browser storage under their previous key.
 
 - November 2: Schoolwide PD (no class).
 - November 26: Thanksgiving festival menu plus a vegetarian set.
 - November 27: Thanksgiving holiday.
-- November 30: Monday only; December dates were not supplied.
+- November 30: Monday only. No meals were supplied for December 1–4.
+- December 11: combined Christmas set and a vegetarian set.
 
 `menu-data.js` holds `MENU_WEEKS` and `ALL_MENU_ITEMS`. Keep each meal ID unique by date and set. Source images live in `assets/source/`; AI-generated realistic food images live in `assets/food/` and are labelled as AI food visualizations.
 

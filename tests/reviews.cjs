@@ -118,7 +118,7 @@ async function saved(page) { return page.evaluate(k => JSON.parse(localStorage.g
     await settle(a); await settle(b);
 
     // Offline star changes survive reload and merge with a different child's live change.
-    await show(a, 'asian-20261109'); await a.waitForFunction(async () => (await caches.keys()).includes('aisg-lunch-picker-menu-202611-reviews-v5'));
+    await show(a, 'asian-20261109'); await a.waitForFunction(async () => (await caches.keys()).includes('aisg-lunch-picker-menu-20261207-v6'));
     await aContext.setOffline(true); await a.locator('#kid1-star-2').click(); await a.reload();
     assert.equal((await saved(a)).reviews.kid1['asian-20261109'].stars, 2);
     await show(b, 'asian-20261109'); await b.locator('#kid2-star-4').click(); await settle(b);
